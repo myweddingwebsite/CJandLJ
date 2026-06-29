@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CJ & LJ — The Wedding | November 21, 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -72,13 +72,22 @@
   .hero-twig.bl { bottom: 15%; left: 2%; width: 180px; opacity: 0.08; transform: rotate(100deg); }
 
   .hero-inner { position: relative; z-index: 2; text-align: center; max-width: 700px; animation: fadeUp 1.2s ease both; }
-  .hero-monogram { font-family: 'Cormorant Garamond', serif; font-size: clamp(6rem, 18vw, 13rem); font-weight: 300; line-height: 0.85; color: var(--white); letter-spacing: -0.02em; }
-  .hero-amp { font-size: clamp(3rem, 8vw, 6rem); color: var(--gold-light); display: block; margin: 0.1em 0; }
+  .hero-monogram { font-family: 'Playfair Display', serif; font-size: clamp(6rem, 18vw, 13rem); font-weight: 400; line-height: 0.85; color: var(--white); letter-spacing: -0.02em; }
+  .hero-amp { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6rem); font-style: italic; color: var(--gold-light); display: block; margin: 0.1em 0; }
   .hero-subtitle { font-family: 'Cinzel', serif; font-size: clamp(0.65rem, 2vw, 0.85rem); letter-spacing: 0.45em; color: rgba(255,255,255,0.7); text-transform: uppercase; margin-top: 1.2rem; }
   .hero-divider { width: 60px; height: 1px; background: var(--gold-light); margin: 1.8rem auto; opacity: 0.7; }
   .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1rem, 3vw, 1.25rem); color: rgba(255,255,255,0.85); font-weight: 300; line-height: 1.8; }
   .hero-date { margin-top: 2rem; font-family: 'Cinzel', serif; font-size: clamp(0.75rem, 2vw, 0.9rem); letter-spacing: 0.3em; color: var(--gold-light); text-transform: uppercase; }
   .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: rgba(255,255,255,0.45); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; animation: bounce 2.2s infinite; }
+
+  /* ── COUNTDOWN ── */
+  .countdown-wrap { margin-top: 2.2rem; }
+  .countdown-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; display: block; }
+  .countdown-grid { display: flex; gap: 1rem; justify-content: center; }
+  .cd-unit { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .cd-num { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 3.5rem); font-weight: 700; color: var(--white); line-height: 1; min-width: 2ch; text-align: center; }
+  .cd-lbl { font-family: 'Lato', sans-serif; font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .cd-sep { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 4vw, 2.5rem); color: rgba(255,255,255,0.25); line-height: 1; padding-top: 0.1em; }
 
   /* ── LOCATION ── */
   .location-section { background: var(--cream-dark); }
@@ -86,7 +95,7 @@
   .venue-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 860px; margin: 0 auto 3rem; }
   .venue-card { background: var(--warm-white); border-radius: 4px; overflow: hidden; box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
   .venue-illustration { height: 320px; background: var(--sage); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .venue-illustration img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; object-position: center; transition: transform 8s ease; }
+  .venue-illustration img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 8s ease; }
   .venue-card:hover .venue-illustration img { transform: scale(1.05); }
   .venue-illustration-label { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; font-family: 'Lato', sans-serif; gap: 10px; }
   .venue-body { padding: 1.6rem; text-align: center; }
@@ -115,19 +124,41 @@
   .timeline-note { text-align: center; margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,0.65); max-width: 600px; margin-left: auto; margin-right: auto; }
 
   /* ── ATTIRE ── */
-  .attire-section { background: var(--cream); }
-  .attire-rect-placeholder {
-    max-width: 960px; margin: 0 auto 1.5rem;
-    height: auto;
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-  }
-  .attire-rect-placeholder img {
-    width: 100%; height: auto; display: block;
-    object-fit: cover;
-  }
-  .attire-note { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+  .attire-section { background: #1a2235; }
+  .attire-section .section-label { color: rgba(255,255,255,0.5); }
+  .attire-section .section-title { color: white; }
+  .attire-section .section-rule { background: var(--gold-light); }
+
+  /* Figure illustrations */
+  .attire-figures-row { display: flex; justify-content: center; align-items: flex-end; gap: 0; max-width: 1000px; margin: 0 auto 2rem; overflow-x: auto; padding-bottom: 0.5rem; }
+  .attire-figure { display: flex; flex-direction: column; align-items: center; padding: 0 0.6rem; min-width: 80px; }
+  .fig-person { width: 56px; height: 120px; position: relative; margin-bottom: 8px; }
+  .fig-head { width: 20px; height: 20px; border-radius: 50%; background: #c8a97e; position: absolute; top: 0; left: 50%; transform: translateX(-50%); }
+  .fig-dress { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); }
+  .fig-suit { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); }
+  .fig-label { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-align: center; line-height: 1.4; margin-bottom: 2px; }
+  .fig-color { font-family: 'Lato', sans-serif; font-size: 0.48rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-align: center; }
+  .fig-star { font-weight: 700; color: white; font-size: 0.55rem; }
+
+  /* Color bar */
+  .attire-colorbar { height: 6px; max-width: 1000px; margin: 0 auto 3rem; display: flex; border-radius: 3px; overflow: hidden; }
+  .attire-colorbar span { flex: 1; }
+
+  /* Three column attire info */
+  .attire-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; max-width: 1000px; margin: 0 auto 2rem; }
+  .attire-col-title { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.45); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.8rem; margin-bottom: 1.2rem; }
+  .attire-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1.2rem; }
+  .attire-dots { display: flex; gap: 4px; flex-shrink: 0; margin-top: 4px; }
+  .adot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+  .attire-item-text {}
+  .attire-item-role { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); display: block; margin-bottom: 2px; }
+  .attire-item-color { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: white; line-height: 1.2; }
+
+  /* Bottom note */
+  .attire-bottom-note { border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 1.2rem 2rem; max-width: 700px; margin: 0 auto; text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,0.6); }
+  .attire-bottom-note strong { font-style: normal; color: white; }
+
+  .attire-note { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(255,255,255,0.6); font-size: 1.05rem; max-width: 700px; margin: 0 auto 2rem; border-left: 3px solid rgba(255,255,255,0.15); padding-left: 1.2rem; text-align: left; }
 
   /* ── ENTOURAGE ── */
   .entourage-section { background: var(--cream-dark); }
@@ -251,11 +282,24 @@
     .t-dot { flex-shrink: 0; }
     .t-time, .t-label { text-align: left; }
 
-    .attire-rect-placeholder { border-radius: 4px; }
+    .attire-cols { grid-template-columns: 1fr; gap: 0; }
+    .attire-col-title { margin-top: 1.5rem; }
+    .attire-figures-row { gap: 0; }
+    .attire-figure { padding: 0 0.3rem; min-width: 60px; }
+    .fig-person { width: 44px; }
 
+    .ent-2col { grid-template-columns: 1fr 1fr; gap: 0.1rem 1rem; }
+    .ent-roles-2col { grid-template-columns: 1fr 1fr; gap: 0.8rem 1rem; }
+  }
+
+  @media (max-width: 400px) {
     .ent-2col { grid-template-columns: 1fr; gap: 0.1rem; }
-    .ent-roles-2col { grid-template-columns: 1fr; gap: 1.5rem; }
+    .ent-roles-2col { grid-template-columns: 1fr; gap: 1rem; }
+    .countdown-grid { gap: 0.5rem; }
+    .cd-sep { display: none; }
+  }
 
+  @media (max-width: 768px) {
     .gift-cards { grid-template-columns: 1fr; }
     .rsvp-frame-wrap iframe { height: 900px; }
 
@@ -346,6 +390,18 @@
       we invite you to celebrate our wedding.
     </p>
     <div class="hero-date">Saturday · November 21, 2026</div>
+    <div class="countdown-wrap">
+      <span class="countdown-label">Counting down to forever</span>
+      <div class="countdown-grid">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-lbl">Days</span></div>
+        <div class="cd-sep">·</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-lbl">Hours</span></div>
+        <div class="cd-sep">·</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-mins">--</span><span class="cd-lbl">Minutes</span></div>
+        <div class="cd-sep">·</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-secs">--</span><span class="cd-lbl">Seconds</span></div>
+      </div>
+    </div>
   </div>
   <div class="scroll-hint">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -435,20 +491,239 @@
 
 <!-- ═══════════════════════ ATTIRE ═══════════════════════ -->
 <section class="attire-section" id="attire">
-  <svg class="twig-deco tr" viewBox="0 0 280 380"><use href="#twig"/></svg>
-  <svg class="twig-deco bl" viewBox="0 0 280 380"><use href="#twig"/></svg>
+  <svg class="twig-deco tl" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
+  <svg class="twig-deco br" viewBox="0 0 280 380" style="opacity:0.04;"><use href="#twig"/></svg>
 
   <div class="container">
     <span class="section-label reveal">Dress Code</span>
     <h2 class="section-title reveal">What to Wear</h2>
     <div class="section-rule reveal"></div>
-    <div class="attire-rect-placeholder reveal">
-      <img src="https://raw.githubusercontent.com/myweddingwebsite/CJandLJ/refs/heads/main/attire%20placeholder.jpg" alt="Attire Guide" loading="lazy">
+
+    <!-- Figure Row -->
+    <div class="attire-figures-row reveal">
+
+      <!-- Female Guest -->
+      <div class="attire-figure">
+        <div class="fig-person">
+          <div class="fig-head"></div>
+          <svg class="fig-dress" width="40" height="95" viewBox="0 0 40 95">
+            <path d="M20 0 L8 10 L2 95 L38 95 L32 10 Z" fill="#b8a898"/>
+          </svg>
+        </div>
+        <div class="fig-label">Female<br>Guest</div>
+        <div class="fig-color">Brown/Beige</div>
+      </div>
+
+      <!-- Male Guest -->
+      <div class="attire-figure">
+        <div class="fig-person">
+          <div class="fig-head"></div>
+          <svg class="fig-suit" width="38" height="95" viewBox="0 0 38 95">
+            <rect x="4" y="0" width="30" height="50" rx="2" fill="#9e8f80"/>
+            <rect x="4" y="50" width="13" height="45" fill="#9e8f80"/>
+            <rect x="21" y="50" width="13" height="45" fill="#9e8f80"/>
+            <rect x="16" y="2" width="6" height="40" fill="#c9a96e" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="fig-label">Male<br>Guest</div>
+        <div class="fig-color">Brown/Beige</div>
+      </div>
+
+      <!-- Godmother -->
+      <div class="attire-figure">
+        <div class="fig-person">
+          <div class="fig-head"></div>
+          <svg class="fig-dress" width="40" height="95" viewBox="0 0 40 95">
+            <path d="M20 0 L8 10 L2 95 L38 95 L32 10 Z" fill="#7a90a8"/>
+          </svg>
+        </div>
+        <div class="fig-label">God-<br>mother</div>
+        <div class="fig-color">Dusty Blue</div>
+      </div>
+
+      <!-- Godfather -->
+      <div class="attire-figure">
+        <div class="fig-person">
+          <div class="fig-head"></div>
+          <svg class="fig-suit" width="38" height="95" viewBox="0 0 38 95">
+            <rect x="4" y="0" width="30" height="50" rx="2" fill="#2d2d3a"/>
+            <rect x="4" y="50" width="13" height="45" fill="#2d2d3a"/>
+            <rect x="21" y="50" width="13" height="45" fill="#2d2d3a"/>
+            <rect x="16" y="2" width="6" height="40" fill="#7a90a8" opacity="0.8"/>
+          </svg>
+        </div>
+        <div class="fig-label">God-<br>father</div>
+        <div class="fig-color">Black + Dusty Blue</div>
+      </div>
+
+      <!-- Maid of Honor -->
+      <div class="attire-figure">
+        <div class="fig-person">
+          <div class="fig-head"></div>
+          <svg class="fig-dress" width="40" height="95" viewBox="0 0 40 95">
+            <path d="M20 0 L8 10 L2 95 L38 95 L32 10 Z" fill="#4a7c5f"/>
+          </svg>
+        </div>
+        <div class="fig-label">Maid of<br>Honor</div>
+        <div class="fig-color">Moss Green</div>
+      </div>
+
+      <!-- BRIDE center -->
+      <div class="attire-figure">
+        <div class="fig-person">
+          <div class="fig-head" style="background:#e8d5b0;"></div>
+          <svg class="fig-dress" width="50" height="110" viewBox="0 0 50 110">
+            <path d="M25 0 L10 12 L0 110 L50 110 L40 12 Z" fill="#f8f4ee"/>
+            <ellipse cx="32" cy="60" rx="8" ry="8" fill="#d4c4a8" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="fig-label fig-star">BRIDE</div>
+        <div class="fig-color" style="color:rgba(255,255,255,0.5);">White</div>
+      </div>
+
+      <!-- Bridesmaids -->
+      <div class="attire-figure">
+        <div class="fig-person">
+          <div class="fig-head"></div>
+          <svg class="fig-dress" width="40" height="95" viewBox="0 0 40 95">
+            <path d="M20 0 L8 10 L2 95 L38 95 L32 10 Z" fill="#4a7c5f"/>
+          </svg>
+        </div>
+        <div class="fig-label">Brides-<br>maids</div>
+        <div class="fig-color">Moss Green</div>
+      </div>
+
+      <!-- Best Man -->
+      <div class="attire-figure">
+        <div class="fig-person">
+          <div class="fig-head"></div>
+          <svg class="fig-suit" width="38" height="95" viewBox="0 0 38 95">
+            <rect x="4" y="0" width="30" height="50" rx="2" fill="#6b7280"/>
+            <rect x="4" y="50" width="13" height="45" fill="#6b7280"/>
+            <rect x="21" y="50" width="13" height="45" fill="#6b7280"/>
+            <rect x="16" y="2" width="6" height="40" fill="#4a7c5f" opacity="0.85"/>
+          </svg>
+        </div>
+        <div class="fig-label">Best Man<br>& Grooms</div>
+        <div class="fig-color">Mid Gray</div>
+      </div>
+
     </div>
+
+    <!-- Color Bar -->
+    <div class="attire-colorbar reveal">
+      <span style="background:#b8a898; flex:2;"></span>
+      <span style="background:#9e8f80; flex:2;"></span>
+      <span style="background:#7a90a8; flex:1.5;"></span>
+      <span style="background:#2d2d3a; flex:1.5;"></span>
+      <span style="background:#4a7c5f; flex:1.5;"></span>
+      <span style="background:#f8f4ee; flex:2;"></span>
+      <span style="background:#4a7c5f; flex:1.5;"></span>
+      <span style="background:#6b7280; flex:2;"></span>
+    </div>
+
+    <!-- Italic quote -->
     <p class="attire-note reveal">
-      Please feel free to wear comfortable and appropriate wedding attire,<br>
-      and we would appreciate it if you follow the color theme.
+      We truly appreciate your personal style. We kindly request the following attire so our celebration photographs beautifully together.
     </p>
+
+    <!-- 3-column breakdown -->
+    <div class="attire-cols reveal">
+
+      <!-- For Guests -->
+      <div>
+        <div class="attire-col-title">For Guests</div>
+        <div class="attire-item">
+          <div class="attire-dots">
+            <span class="adot" style="background:#b8a898;"></span>
+            <span class="adot" style="background:#c4b09a;"></span>
+            <span class="adot" style="background:#d4c4a8;"></span>
+          </div>
+          <div class="attire-item-text">
+            <span class="attire-item-role">Female Guests</span>
+            <div class="attire-item-color">Shades of Brown / Beige</div>
+          </div>
+        </div>
+        <div class="attire-item">
+          <div class="attire-dots">
+            <span class="adot" style="background:#9e8f80;"></span>
+            <span class="adot" style="background:#b8a898;"></span>
+          </div>
+          <div class="attire-item-text">
+            <span class="attire-item-role">Male Guests</span>
+            <div class="attire-item-color">Shades of Brown / Beige</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- For Principal Sponsors -->
+      <div>
+        <div class="attire-col-title">For Principal Sponsors</div>
+        <div class="attire-item">
+          <div class="attire-dots">
+            <span class="adot" style="background:#7a90a8; border:1px solid rgba(255,255,255,0.2);"></span>
+          </div>
+          <div class="attire-item-text">
+            <span class="attire-item-role">Godmothers</span>
+            <div class="attire-item-color">Dusty Blue</div>
+          </div>
+        </div>
+        <div class="attire-item">
+          <div class="attire-dots">
+            <span class="adot" style="background:#2d2d3a;"></span>
+            <span class="adot" style="background:#7a90a8;"></span>
+          </div>
+          <div class="attire-item-text">
+            <span class="attire-item-role">Godfathers</span>
+            <div class="attire-item-color">Black Coat & Pants</div>
+            <div style="font-family:'Lato',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:2px;">Dusty Blue necktie</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- For Secondary Sponsors -->
+      <div>
+        <div class="attire-col-title">For Secondary Sponsors</div>
+        <div class="attire-item">
+          <div class="attire-dots">
+            <span class="adot" style="background:#4a7c5f;"></span>
+            <span class="adot" style="background:#5a9470;"></span>
+          </div>
+          <div class="attire-item-text">
+            <span class="attire-item-role">Maid of Honor</span>
+            <div class="attire-item-color">Moss Green / Emerald</div>
+          </div>
+        </div>
+        <div class="attire-item">
+          <div class="attire-dots">
+            <span class="adot" style="background:#4a7c5f;"></span>
+            <span class="adot" style="background:#5a9470;"></span>
+          </div>
+          <div class="attire-item-text">
+            <span class="attire-item-role">Bridesmaids</span>
+            <div class="attire-item-color">Moss Green / Emerald</div>
+          </div>
+        </div>
+        <div class="attire-item">
+          <div class="attire-dots">
+            <span class="adot" style="background:#6b7280;"></span>
+            <span class="adot" style="background:#4a7c5f;"></span>
+          </div>
+          <div class="attire-item-text">
+            <span class="attire-item-role">Best Man & Groomsmen</span>
+            <div class="attire-item-color">Mid Gray Coat & Pants</div>
+            <div style="font-family:'Lato',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:2px;">Moss Green / Emerald necktie</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom disclaimer -->
+    <div class="attire-bottom-note reveal">
+      Please reserve <strong>white</strong> and <strong>ivory</strong> for the bride only. We can't wait to see everyone looking beautiful!
+    </div>
+
   </div>
 </section>
 
@@ -494,7 +769,7 @@
           <div class="ent-name">Mr. Bethoven Arile</div><div class="ent-name">Mrs. Teresa Arile</div>
           <div class="ent-name">Mr. Gary Balmaceda</div><div class="ent-name">Mrs. Irene Balmaceda</div>
           <div class="ent-name">Mr. Diego Cruz III</div><div class="ent-name">Mrs. Lorena Cruz</div>
-          <div class="ent-name">Mr. Roldan Redondo</div><div class="ent-name">Mrs. Carina Surname</div>
+          <div class="ent-name">Mr. Roldan Redondo</div><div class="ent-name">Ms. Carina Formiloza</div>
           <div class="ent-name">Mr. Christopher Faral</div><div class="ent-name">Ms. Ivy Almario</div>
           <div class="ent-name">Mr. Arnold Wagayen</div><div class="ent-name">Ms. Cynthia Almario</div>
           <div class="ent-name">Mr. Clifford Ariola</div><div class="ent-name">Mrs. Leah Mangune</div>
@@ -744,14 +1019,29 @@
   function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
   function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
 
-  // Unified observer for all reveal types
+  // ── COUNTDOWN ──
+  function updateCountdown() {
+    const target = new Date('2026-11-21T13:30:00+08:00').getTime();
+    const now = Date.now();
+    const diff = target - now;
+    if (diff <= 0) {
+      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
+      return;
+    }
+    const pad = n => String(Math.floor(n)).padStart(2, '0');
+    document.getElementById('cd-days').textContent  = pad(diff / 86400000);
+    document.getElementById('cd-hours').textContent = pad((diff % 86400000) / 3600000);
+    document.getElementById('cd-mins').textContent  = pad((diff % 3600000) / 60000);
+    document.getElementById('cd-secs').textContent  = pad((diff % 60000) / 1000);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ── REVEAL OBSERVER ──
   const allReveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revealObserver.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
     });
   }, { threshold: 0.08 });
   allReveals.forEach(el => revealObserver.observe(el));
@@ -760,10 +1050,7 @@
   const rules = document.querySelectorAll('.section-rule');
   const ruleObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('shimmer-ready'), 400);
-        ruleObserver.unobserve(e.target);
-      }
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('shimmer-ready'), 400); ruleObserver.unobserve(e.target); }
     });
   }, { threshold: 0.5 });
   rules.forEach(r => ruleObserver.observe(r));
