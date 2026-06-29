@@ -292,59 +292,57 @@
     padding:0 20px;
 }
 
-/* Figures */
+/* ===== ATTIRE - MOBILE (Single Row) ===== */
 .attire-figures-row{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(120px,1fr));
-    justify-items:center;
-    align-items:end;
-    gap:28px 12px;
-    width:100%;
-    max-width:420px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    gap:14px;
+    flex-wrap:nowrap;          /* Keep everything in one row */
+    overflow-x:auto;           /* Allow horizontal scrolling */
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    padding:0 12px 10px;
     margin:0 auto 32px;
-    overflow:visible;
+    width:100%;
+
+    /* Hide scrollbar */
+    scrollbar-width:none;
+}
+
+.attire-figures-row::-webkit-scrollbar{
+    display:none;
 }
 
 .attire-figure{
-    width:100%;
-    max-width:140px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-end;
-    text-align:center;
+    flex:0 0 auto;
+    min-width:82px;
+    max-width:82px;
     padding:0;
 }
 
-/* If the number of figures is odd, center the last one */
-.attire-figure:last-child:nth-child(odd){
-    grid-column:1 / -1;
-    justify-self:center;
-}
-
 .fig-person{
-    width:78px;
-    height:150px;
+    width:58px;
+    height:120px;
 }
 
 .fig-head{
-    width:24px;
-    height:24px;
+    width:20px;
+    height:20px;
 }
 
 .fig-dress,
 .fig-suit{
-    transform:translateX(-50%) scale(1.15);
-    transform-origin:top center;
+    transform:translateX(-50%) scale(1);
 }
 
 .fig-label{
-    font-size:.62rem;
-    line-height:1.4;
+    font-size:.48rem;
+    line-height:1.35;
 }
 
 .fig-color{
-    font-size:.55rem;
+    font-size:.45rem;
 }
 
 /* Color bar */
