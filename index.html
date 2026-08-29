@@ -22,18 +22,19 @@
     --white: #ffffff;
   }
 
-  /* ── MOBILE SECTION BG IMAGES ── */
+  /* ── SECTION BG IMAGES (desktop subtle + mobile bold) ── */
   .has-mobile-bg {
     position: relative;
     overflow: hidden;
   }
   .has-mobile-bg .mob-bg {
-    display: none;
+    display: block;
     position: absolute; inset: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
+    opacity: 0.18;
     transition: opacity 0.4s;
   }
   .has-mobile-bg .mob-bg-overlay {
@@ -42,8 +43,8 @@
     z-index: 1;
   }
   @media (max-width: 768px) {
-    /* Show mobile bg images */
-    .has-mobile-bg .mob-bg { display: block; }
+    /* Increase bg opacity for mobile */
+    .has-mobile-bg .mob-bg { display: block; opacity: 1; }
     .has-mobile-bg .mob-bg-overlay {
       display: block;
       background: rgba(10,18,8,0.72);
@@ -549,7 +550,27 @@
   .closing-names { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.35em; color: var(--gold-light); position: relative; z-index: 2; }
 
   /* ── FOOTER ── */
-  footer { background: var(--charcoal); padding: 1.5rem 2rem; text-align: center; font-size: 0.72rem; color: rgba(255,255,255,0.35); font-family: 'Lato', sans-serif; letter-spacing: 0.05em; }
+  footer {
+    background: var(--charcoal);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 0.05em;
+    position: relative;
+    overflow: hidden;
+  }
+  footer::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('https://ik.imagekit.io/jcsquo5nq/cjandlj/10.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+    z-index: 0;
+  }
+  footer > * { position: relative; z-index: 1; }
   footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
   footer a:hover { color: var(--gold-light); }
   footer .heart { color: #e88; }
@@ -616,8 +637,8 @@
     .attire-note { border: none; padding: 0; text-align: center; }
     .attire-bottom-note { padding: 1rem; }
 
-    /* Entourage — keep 2 cols on mobile */
-    .ent-2col { grid-template-columns: 1fr 1fr; gap: 0.1rem 0.8rem; }
+    /* Entourage — 1 col on mobile for readability */
+    .ent-2col { grid-template-columns: 1fr; gap: 0.1rem; }
     .ent-roles-2col { grid-template-columns: 1fr 1fr; gap: 0.8rem 0.8rem; }
 
     .gift-cards { grid-template-columns: 1fr; }
@@ -632,7 +653,7 @@
     .countdown-grid { gap: 0.5rem; }
     .cd-sep { display: none; }
     .ent-2col { grid-template-columns: 1fr; gap: 0.1rem; }
-    .ent-roles-2col { grid-template-columns: 1fr; gap: 1rem; }
+    .ent-roles-2col { grid-template-columns: 1fr; gap: 0.8rem; }
   }
 
 </style>
@@ -743,7 +764,7 @@
 
 <!-- ═══════════════════════ LOCATION ═══════════════════════ -->
 <section class="has-mobile-bg location-section" id="location">
-  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/2.jpg');"></div>
+  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/14.jpg');"></div>
   <div class="mob-bg-overlay"></div>
   <!-- twig decorations -->
   <svg class="twig-deco tl" viewBox="0 0 280 380"><use href="#twig"/></svg>
@@ -1274,7 +1295,7 @@
 
 <!-- ═══════════════════════ VIDEO ═══════════════════════ -->
 <section class="video-section has-mobile-bg" id="video">
-  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/7.jpg');"></div>
+  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/11.jpg');"></div>
   <div class="mob-bg-overlay"></div>
   <svg class="twig-deco tl" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
   <svg class="twig-deco br" viewBox="0 0 280 380" style="opacity:0.04;"><use href="#twig"/></svg>
