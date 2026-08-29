@@ -389,20 +389,58 @@
   .ent-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--charcoal); text-align: center; line-height: 1.9; }
 
   /* ── GIFT ── */
-  .gift-section { background: var(--sage); padding: 80px 2rem; }
+  .gift-section { background: var(--sage); padding: 80px 2rem; overflow: visible; }
   .gift-section .section-label { color: rgba(255,255,255,0.6); }
   .gift-section .section-title { color: white; }
   .gift-section .section-rule { background: var(--gold-light); }
   .gift-intro { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1rem, 3vw, 1.15rem); color: rgba(255,255,255,0.8); max-width: 640px; margin: 0 auto 3rem; line-height: 1.9; }
   .gift-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 640px; margin: 0 auto; }
-  .gift-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 2rem; text-align: center; }
+  .gift-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    padding: 2rem;
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    .gift-card {
+      background: rgba(20,40,20,0.75);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 1.5rem 1rem;
+    }
+  }
   .gift-bank { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 600; }
   .gift-bank.bdo { color: #0066cc; background: white; display: inline-block; padding: 4px 14px; border-radius: 4px; }
   .gift-bank.bpi { color: #cc0000; background: white; display: inline-block; padding: 4px 14px; border-radius: 4px; }
   .gift-purpose { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold-light); margin: 0.8rem 0 0.3rem; }
   .gift-acct { font-family: 'Lato', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.55); letter-spacing: 0.1em; margin-bottom: 1rem; }
-  .qr-img { width: 160px; height: 160px; border-radius: 6px; overflow: hidden; margin: 0 auto; border: 3px solid rgba(255,255,255,0.2); }
-  .qr-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .qr-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 6px;
+    overflow: visible;
+    margin: 0 auto;
+    border: 3px solid rgba(255,255,255,0.3);
+    display: block;
+    background: white;
+  }
+  .qr-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border-radius: 4px;
+  }
+  @media (max-width: 768px) {
+    .qr-img {
+      width: min(200px, 70vw);
+      height: min(200px, 70vw);
+      margin: 0 auto;
+      border: 3px solid rgba(255,255,255,0.5);
+    }
+  }
   .gift-closing { text-align: center; margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(255,255,255,0.7); font-size: 1.1rem; }
 
   /* ── VIDEO ── */
@@ -632,7 +670,7 @@
     .has-mobile-bg.location-section { background: transparent; }
     .has-mobile-bg.timeline-section { background: transparent; }
     .has-mobile-bg.attire-section { background: transparent; }
-    .has-mobile-bg.gift-section { background: transparent; }
+    .has-mobile-bg.gift-section { background: rgba(74,89,64,0.92); }
     .has-mobile-bg.uploads-section { background: transparent; }
     .has-mobile-bg.video-section { background: transparent; }
 
