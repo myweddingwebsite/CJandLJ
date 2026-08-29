@@ -27,15 +27,15 @@
     position: relative;
     overflow: hidden;
   }
-  /* Desktop: very subtle photo texture at low opacity */
+  /* Desktop: hidden — only shown on mobile */
   .has-mobile-bg .mob-bg {
-    display: block;
+    display: none;
     position: absolute; inset: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
-    opacity: 0.12;
+    opacity: 1;
   }
   .has-mobile-bg .mob-bg-overlay {
     position: absolute; inset: 0;
@@ -50,8 +50,8 @@
   .has-mobile-bg > div.timeline-track,
   .has-mobile-bg > p.timeline-note { position: relative; z-index: 2; }
   @media (max-width: 768px) {
-    /* Mobile: full opacity bg + dark overlay for readability */
-    .has-mobile-bg .mob-bg { opacity: 1; }
+    /* Mobile: show bg image + dark overlay */
+    .has-mobile-bg .mob-bg { display: block; opacity: 1; }
     .has-mobile-bg .mob-bg-overlay {
       display: block;
       background: rgba(8,16,6,0.74);
@@ -389,7 +389,7 @@
   .ent-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--charcoal); text-align: center; line-height: 1.9; }
 
   /* ── GIFT ── */
-  .gift-section { background: var(--sage); padding: 80px 2rem; overflow: visible; }
+  .gift-section { background: var(--sage); padding: 80px 2rem; position: relative; overflow: hidden; }
   .gift-section .section-label { color: rgba(255,255,255,0.6); }
   .gift-section .section-title { color: white; }
   .gift-section .section-rule { background: var(--gold-light); }
@@ -402,13 +402,7 @@
     padding: 2rem;
     text-align: center;
   }
-  @media (max-width: 768px) {
-    .gift-card {
-      background: rgba(20,40,20,0.75);
-      border: 1px solid rgba(255,255,255,0.25);
-      padding: 1.5rem 1rem;
-    }
-  }
+  /* gift-card mobile handled in qr media block */
   .gift-bank { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 600; }
   .gift-bank.bdo { color: #0066cc; background: white; display: inline-block; padding: 4px 14px; border-radius: 4px; }
   .gift-bank.bpi { color: #cc0000; background: white; display: inline-block; padding: 4px 14px; border-radius: 4px; }
@@ -435,10 +429,27 @@
   }
   @media (max-width: 768px) {
     .qr-img {
-      width: min(200px, 70vw);
-      height: min(200px, 70vw);
-      margin: 0 auto;
-      border: 3px solid rgba(255,255,255,0.5);
+      width: min(180px, 65vw);
+      height: min(180px, 65vw);
+      margin: 0.5rem auto;
+      border: 3px solid rgba(255,255,255,0.8);
+      background: #fff;
+      display: block !important;
+    }
+    .qr-img img {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      opacity: 1 !important;
+    }
+    /* Gift cards solid on mobile */
+    .gift-card {
+      background: rgba(10,28,10,0.88) !important;
+      border: 1px solid rgba(255,255,255,0.3) !important;
+      padding: 1.5rem 1rem !important;
+    }
+    .gift-cards {
+      gap: 1rem;
     }
   }
   .gift-closing { text-align: center; margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(255,255,255,0.7); font-size: 1.1rem; }
@@ -670,7 +681,7 @@
     .has-mobile-bg.location-section { background: transparent; }
     .has-mobile-bg.timeline-section { background: transparent; }
     .has-mobile-bg.attire-section { background: transparent; }
-    .has-mobile-bg.gift-section { background: rgba(74,89,64,0.92); }
+    /* gift-section keeps its own bg — do not make transparent */
     .has-mobile-bg.uploads-section { background: transparent; }
     .has-mobile-bg.video-section { background: transparent; }
 
