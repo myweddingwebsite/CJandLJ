@@ -22,11 +22,12 @@
     --white: #ffffff;
   }
 
-  /* ── SECTION BG IMAGES (desktop subtle + mobile bold) ── */
+  /* ── SECTION BG IMAGES ── */
   .has-mobile-bg {
     position: relative;
     overflow: hidden;
   }
+  /* Desktop: very subtle photo texture at low opacity */
   .has-mobile-bg .mob-bg {
     display: block;
     position: absolute; inset: 0;
@@ -34,40 +35,43 @@
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
-    opacity: 0.18;
-    transition: opacity 0.4s;
+    opacity: 0.12;
   }
   .has-mobile-bg .mob-bg-overlay {
-    display: none;
     position: absolute; inset: 0;
     z-index: 1;
+    display: none;
   }
+  /* All content above the bg layers */
+  .has-mobile-bg .container { position: relative; z-index: 2; }
+  .has-mobile-bg > span.section-label,
+  .has-mobile-bg > h2,
+  .has-mobile-bg > div.section-rule,
+  .has-mobile-bg > div.timeline-track,
+  .has-mobile-bg > p.timeline-note { position: relative; z-index: 2; }
   @media (max-width: 768px) {
-    /* Increase bg opacity for mobile */
-    .has-mobile-bg .mob-bg { display: block; opacity: 1; }
+    /* Mobile: full opacity bg + dark overlay for readability */
+    .has-mobile-bg .mob-bg { opacity: 1; }
     .has-mobile-bg .mob-bg-overlay {
       display: block;
-      background: rgba(10,18,8,0.72);
+      background: rgba(8,16,6,0.74);
     }
-    /* All content inside has-mobile-bg sections sits above overlay */
+    /* Ensure all section content is above overlay */
     .has-mobile-bg .container,
-    .has-mobile-bg .twig-deco,
     .has-mobile-bg > span,
     .has-mobile-bg > h2,
-    .has-mobile-bg > div:not(.mob-bg):not(.mob-bg-overlay),
-    .has-mobile-bg > p { position: relative; z-index: 2; }
-    /* Override text colors on bg-image sections for readability */
-    .has-mobile-bg .section-label { color: rgba(255,255,255,0.65) !important; }
-    .has-mobile-bg .section-title { color: white !important; }
+    .has-mobile-bg > p { position: relative; z-index: 3; }
+    /* Text colors */
+    .has-mobile-bg .section-label { color: rgba(255,255,255,0.6) !important; }
+    .has-mobile-bg .section-title { color: #fff !important; }
     .has-mobile-bg .section-rule { background: var(--gold-light) !important; opacity: 1 !important; }
-    /* Note cards, name text */
     .has-mobile-bg .note-item { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.88); border-left-color: var(--gold-light); }
-    .has-mobile-bg .note-item strong { color: white; }
-    /* Nav on mobile gets dark photo bg */
-    nav { background: rgba(10,18,8,0.88) !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
+    .has-mobile-bg .note-item strong { color: #fff; }
+    /* Nav */
+    nav { background: rgba(8,16,6,0.88) !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
     nav .nav-logo { color: var(--gold-light) !important; }
-    nav .nav-toggle span { background: white !important; }
-    .mobile-menu { background: rgba(10,18,8,0.96) !important; }
+    nav .nav-toggle span { background: #fff !important; }
+    .mobile-menu { background: rgba(8,16,6,0.97) !important; }
     .mobile-menu a { color: rgba(255,255,255,0.85) !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
   }
 
@@ -360,19 +364,14 @@
      uses its own bg system so remove that constraint */
   .entourage-photo-bg { overflow: visible; }
 
-  /* White text overrides for entourage */
-  .entourage-photo-bg .section-label { color: rgba(255,255,255,0.6); }
-  .entourage-photo-bg .section-title { color: white; }
-  .entourage-photo-bg .section-rule { background: var(--gold-light); opacity: 1; }
-  .entourage-photo-bg .entourage-group-title {
-    color: var(--gold-light);
-  }
-  .entourage-photo-bg .entourage-group-title::after {
-    background: var(--gold-light);
-    opacity: 0.5;
-  }
-  .entourage-photo-bg .ent-role-title { color: rgba(255,255,255,0.55); }
-  .entourage-photo-bg .ent-name { color: rgba(255,255,255,0.92); }
+  /* White text overrides for entourage (desktop + mobile) */
+  .entourage-photo-bg .section-label { color: rgba(255,255,255,0.6) !important; }
+  .entourage-photo-bg .section-title { color: white !important; }
+  .entourage-photo-bg .section-rule { background: var(--gold-light) !important; opacity: 1 !important; }
+  .entourage-photo-bg .entourage-group-title { color: var(--gold-light) !important; }
+  .entourage-photo-bg .entourage-group-title::after { background: var(--gold-light); opacity: 0.5; }
+  .entourage-photo-bg .ent-role-title { color: rgba(255,255,255,0.6) !important; }
+  .entourage-photo-bg .ent-name { color: rgba(255,255,255,0.92) !important; }
 
 
   .entourage-block { max-width: 860px; margin: 0 auto; }
@@ -544,8 +543,23 @@
   .rsvp-frame-wrap iframe { width: 100%; height: 700px; border: none; border-radius: 4px; box-shadow: 0 4px 30px rgba(0,0,0,0.12); display: block; }
 
   /* ── CLOSING ── */
-  .closing-section { background: var(--sage-dark); padding: 80px 2rem; text-align: center; position: relative; overflow: hidden; }
-  .closing-monogram { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(255,255,255,0.12); line-height: 1; margin-bottom: 1.5rem; }
+  .closing-section {
+    background: var(--sage-dark);
+    padding: 80px 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('https://ik.imagekit.io/jcsquo5nq/cjandlj/10.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.22;
+    z-index: 0;
+  }
+  .closing-monogram { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(255,255,255,0.12); line-height: 1; margin-bottom: 1.5rem; position: relative; z-index: 1; }
   .closing-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: rgba(255,255,255,0.8); line-height: 1.9; max-width: 540px; margin: 0 auto 1.5rem; position: relative; z-index: 2; }
   .closing-names { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.35em; color: var(--gold-light); position: relative; z-index: 2; }
 
@@ -558,19 +572,7 @@
     color: rgba(255,255,255,0.35);
     font-family: 'Lato', sans-serif;
     letter-spacing: 0.05em;
-    position: relative;
-    overflow: hidden;
   }
-  footer::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: url('https://ik.imagekit.io/jcsquo5nq/cjandlj/10.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.18;
-    z-index: 0;
-  }
-  footer > * { position: relative; z-index: 1; }
   footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
   footer a:hover { color: var(--gold-light); }
   footer .heart { color: #e88; }
@@ -618,7 +620,21 @@
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .nav-toggle { display: flex; }
-    section { padding: 60px 1.2rem; }
+
+    /* Remove gaps between sections */
+    section, .photo-section, .video-section { padding: 60px 1.2rem; margin: 0; }
+    section + section,
+    section + div,
+    div + section { margin-top: 0; }
+
+    /* Prevent section background colors from showing through on mobile
+       — let the mob-bg image take over */
+    .has-mobile-bg.location-section { background: transparent; }
+    .has-mobile-bg.timeline-section { background: transparent; }
+    .has-mobile-bg.attire-section { background: transparent; }
+    .has-mobile-bg.gift-section { background: transparent; }
+    .has-mobile-bg.uploads-section { background: transparent; }
+    .has-mobile-bg.video-section { background: transparent; }
 
     .venue-cards { grid-template-columns: 1fr; }
     .notes-grid { grid-template-columns: 1fr; }
@@ -629,7 +645,7 @@
     .t-dot { flex-shrink: 0; }
     .t-time, .t-label { text-align: left; }
 
-    /* Attire — figures stay single row, scaled by flex */
+    /* Attire */
     .attire-figures-row { max-width: 100%; padding: 0; }
     .attire-figure { padding: 0 1px; }
     .attire-cols { grid-template-columns: 1fr; gap: 0; }
@@ -637,23 +653,22 @@
     .attire-note { border: none; padding: 0; text-align: center; }
     .attire-bottom-note { padding: 1rem; }
 
-    /* Entourage — 1 col on mobile for readability */
-    .ent-2col { grid-template-columns: 1fr; gap: 0.1rem; }
-    .ent-roles-2col { grid-template-columns: 1fr 1fr; gap: 0.8rem 0.8rem; }
+    /* Entourage — FORCE 2 columns always */
+    .ent-2col { grid-template-columns: 1fr 1fr !important; gap: 0.1rem 0.6rem; }
+    .ent-roles-2col { grid-template-columns: 1fr 1fr !important; gap: 0.8rem 0.6rem; }
+    .ent-name { font-size: 0.78rem; }
 
     .gift-cards { grid-template-columns: 1fr; }
     .rsvp-frame-wrap iframe { height: 900px; }
 
-    .photo-placeholder { grid-template-columns: 1fr 1fr; grid-template-rows: 160px 160px 160px; }
-    .photo-placeholder .ph.large { grid-column: 1 / 3; grid-row: 1; }
-    .photo-placeholder .ph.tall { grid-row: auto; }
+    .gallery-grid { columns: 2; column-gap: 6px; }
+    .gallery-item { margin-bottom: 6px; }
   }
 
   @media (max-width: 400px) {
-    .countdown-grid { gap: 0.5rem; }
+    .countdown-grid { gap: 0.4rem; }
     .cd-sep { display: none; }
-    .ent-2col { grid-template-columns: 1fr; gap: 0.1rem; }
-    .ent-roles-2col { grid-template-columns: 1fr; gap: 0.8rem; }
+    .cd-num { font-size: 1.8rem; }
   }
 
 </style>
