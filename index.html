@@ -22,6 +22,40 @@
     --white: #ffffff;
   }
 
+  /* ── MOBILE SECTION BG IMAGES ── */
+  .has-mobile-bg {
+    position: relative;
+  }
+  .has-mobile-bg .mob-bg {
+    display: none;
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  .has-mobile-bg > * { position: relative; z-index: 2; }
+  @media (max-width: 768px) {
+    .has-mobile-bg .mob-bg { display: block; }
+    .has-mobile-bg .mob-bg-overlay {
+      display: block;
+      position: absolute; inset: 0;
+      background: rgba(10,18,8,0.72);
+      z-index: 1;
+    }
+    /* Override text colors on bg-image sections for readability */
+    .has-mobile-bg .section-label,
+    .has-mobile-bg .section-title,
+    .has-mobile-bg .section-rule { color: white !important; }
+    .has-mobile-bg .section-rule { background: var(--gold-light) !important; opacity: 1 !important; }
+    /* Nav on mobile gets photo bg */
+    nav { background: rgba(10,18,8,0.82) !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
+    nav .nav-logo { color: var(--gold-light) !important; }
+    nav .nav-toggle span { background: white !important; }
+    .mobile-menu { background: rgba(10,18,8,0.95) !important; }
+    .mobile-menu a { color: rgba(255,255,255,0.85) !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
+  }
+
   html { scroll-behavior: smooth; }
   body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
 
@@ -63,7 +97,36 @@
   .twig-deco.mr { top: 40%; right: -50px; transform: translateY(-50%) rotate(-150deg); width: 250px; }
 
   /* ── HERO ── */
-  .hero { min-height: 100vh; background: var(--sage); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 80px 2rem 4rem; }
+  .hero {
+    min-height: 100vh;
+    background: var(--sage);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 80px 2rem 4rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('https://ik.imagekit.io/jcsquo5nq/cjandlj/1.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    animation: heroZoom 18s ease-in-out infinite alternate;
+    z-index: 0;
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1); }
+    to   { transform: scale(1.06); }
+  }
+  .hero-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(20,30,15,0.55) 0%,
+      rgba(20,30,15,0.45) 40%,
+      rgba(20,30,15,0.62) 80%,
+      rgba(10,18,8,0.75) 100%
+    );
+  }
   .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 60%, rgba(201,169,110,0.14) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%); }
   .hero-twig { position: absolute; pointer-events: none; }
   .hero-twig.tl { top: -30px; left: -50px; width: 420px; opacity: 0.13; transform: rotate(10deg); }
@@ -270,7 +333,7 @@
   /* 2-column role boxes */
   .ent-roles-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 3rem; max-width: 680px; margin: 0 auto; text-align: center; }
   .ent-role-title { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--sage); display: block; margin-bottom: 0.5rem; }
-  .ent-name { font-family: 'Cormorant Garamond', serif; font-size: .85rem; color: var(--charcoal); text-align: left; line-height: 1.9; }
+  .ent-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--charcoal); text-align: center; line-height: 1.9; }
 
   /* ── GIFT ── */
   .gift-section { background: var(--sage); padding: 80px 2rem; }
@@ -289,6 +352,34 @@
   .qr-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .gift-closing { text-align: center; margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(255,255,255,0.7); font-size: 1.1rem; }
 
+  /* ── VIDEO ── */
+  .video-section { background: var(--charcoal); padding: 90px 2rem; }
+  .video-section .section-label { color: rgba(255,255,255,0.5); }
+  .video-section .section-title { color: white; }
+  .video-section .section-rule { background: var(--gold-light); }
+  .video-wrap {
+    max-width: 860px; margin: 0 auto;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 50px rgba(0,0,0,0.5);
+  }
+  .video-wrap iframe {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .video-caption {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+  }
+
   /* ── UPLOADS ── */
   .uploads-section { background: var(--cream); }
   .upload-btn { display: flex; align-items: center; gap: 10px; background: var(--sage); color: white; font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; padding: 1rem 2rem; border-radius: 2px; transition: background 0.25s, transform 0.2s; width: fit-content; margin: 0 auto; }
@@ -297,52 +388,107 @@
 
   /* ── GALLERY ── */
   .photo-section { background: var(--sage-dark); padding: 70px 2rem; position: relative; overflow: hidden; }
-  .photo-placeholder { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 260px 260px; gap: 12px; position: relative; z-index: 2; }
-  .photo-placeholder .ph { background: rgba(255,255,255,0.06); border: 1.5px dashed rgba(255,255,255,0.22); border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: rgba(255,255,255,0.35); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Lato', sans-serif; }
-  .photo-placeholder .ph.large { grid-column: 1 / 3; grid-row: 1 / 3; }
-  .photo-placeholder .ph.tall { grid-row: 1 / 3; }
+
+  /* Masonry grid */
+  .gallery-grid {
+    max-width: 980px; margin: 0 auto;
+    columns: 3; column-gap: 10px;
+    position: relative; z-index: 2;
+  }
+  .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    display: block;
+  }
+  .gallery-item img {
+    width: 100%; height: auto;
+    display: block;
+    transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
+  }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-item-overlay {
+    position: absolute; inset: 0;
+    background: rgba(10,18,8,0);
+    transition: background 0.3s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gallery-item:hover .gallery-item-overlay { background: rgba(10,18,8,0.3); }
+  .gallery-item-overlay svg { opacity: 0; transition: opacity 0.3s; color: white; }
+  .gallery-item:hover .gallery-item-overlay svg { opacity: 1; }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(5,10,5,0.95);
+    align-items: center; justify-content: center;
+    backdrop-filter: blur(8px);
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-inner {
+    position: relative;
+    max-width: min(90vw, 1100px);
+    max-height: 90vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lightbox-img {
+    max-width: 100%; max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+    user-select: none;
+  }
+  .lb-close {
+    position: fixed; top: 1.2rem; right: 1.5rem;
+    background: none; border: none; color: white; cursor: pointer;
+    font-size: 2rem; line-height: 1; opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 1001;
+  }
+  .lb-close:hover { opacity: 1; transform: rotate(90deg); }
+  .lb-prev, .lb-next {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: white; cursor: pointer;
+    width: 50px; height: 50px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; z-index: 1001;
+    font-size: 1.2rem;
+  }
+  .lb-prev { left: 1rem; }
+  .lb-next { right: 1rem; }
+  .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,0.22); }
+  .lb-counter {
+    position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.5); font-family: 'Cinzel',serif;
+    font-size: 0.65rem; letter-spacing: 0.3em;
+    z-index: 1001;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid { columns: 2; column-gap: 6px; }
+    .gallery-item { margin-bottom: 6px; }
+    .lb-prev { left: 0.4rem; }
+    .lb-next { right: 0.4rem; }
+  }
+  @media (max-width: 480px) {
+    .gallery-grid { columns: 2; }
+  }
 
   /* ── RSVP ── */
   .rsvp-section { background: var(--cream-dark); padding: 0; }
-  .rsvp-header { background: var(--cream-dark); padding: 60px 2rem 30px; text-align: center; position: relative; overflow: hidden; }
-  .rsvp-header .section-label { color: var(--sage); }
-  .rsvp-header .section-title { color: var(--sage); }
+  .rsvp-header { background: var(--sage-dark); padding: 60px 2rem 30px; text-align: center; position: relative; overflow: hidden; }
+  .rsvp-header .section-label { color: rgba(255,255,255,0.6); }
+  .rsvp-header .section-title { color: white; }
   .rsvp-header .section-rule { background: var(--gold-light); }
-  .rsvp-header p { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--sage);; font-size: 1.05rem; margin-bottom: 1.5rem; position: relative; z-index: 2; }
-  .rsvp-frame-wrap {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 1rem 60px;
-  text-align: center;
-}
+  .rsvp-header p { font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(255,255,255,0.75); font-size: 1.05rem; margin-bottom: 1.5rem; position: relative; z-index: 2; }
+  .rsvp-frame-wrap { max-width: 900px; margin: 0 auto; padding: 0 1rem 60px; }
+  .rsvp-frame-wrap iframe { width: 100%; height: 700px; border: none; border-radius: 4px; box-shadow: 0 4px 30px rgba(0,0,0,0.12); display: block; }
 
-.rsvp-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 42px;
-  background: var(--sage);
-  color: #fff;
-  text-decoration: none;
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  border-radius: 4px;
-  transition: all .25s ease;
-  box-shadow: 0 8px 24px rgba(0,0,0,.12);
-}
-
-.rsvp-btn:hover {
-  background: var(--sage-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0,0,0,.18);
-}
-
-.rsvp-btn:active {
-  transform: translateY(0);
-}
- 
   /* ── CLOSING ── */
   .closing-section { background: var(--sage-dark); padding: 80px 2rem; text-align: center; position: relative; overflow: hidden; }
   .closing-monogram { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(255,255,255,0.12); line-height: 1; margin-bottom: 1.5rem; }
@@ -417,8 +563,12 @@
     .attire-note { border: none; padding: 0; text-align: center; }
     .attire-bottom-note { padding: 1rem; }
 
+    /* Entourage — keep 2 cols on mobile */
+    .ent-2col { grid-template-columns: 1fr 1fr; gap: 0.1rem 0.8rem; }
+    .ent-roles-2col { grid-template-columns: 1fr 1fr; gap: 0.8rem 0.8rem; }
 
     .gift-cards { grid-template-columns: 1fr; }
+    .rsvp-frame-wrap iframe { height: 900px; }
 
     .photo-placeholder { grid-template-columns: 1fr 1fr; grid-template-rows: 160px 160px 160px; }
     .photo-placeholder .ph.large { grid-column: 1 / 3; grid-row: 1; }
@@ -428,6 +578,8 @@
   @media (max-width: 400px) {
     .countdown-grid { gap: 0.5rem; }
     .cd-sep { display: none; }
+    .ent-2col { grid-template-columns: 1fr; gap: 0.1rem; }
+    .ent-roles-2col { grid-template-columns: 1fr; gap: 1rem; }
   }
 
 </style>
@@ -499,6 +651,8 @@
 
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
 <section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
   <svg class="hero-twig tl" viewBox="0 0 280 380"><use href="#twig"/></svg>
   <svg class="hero-twig br" viewBox="0 0 280 380"><use href="#twig"/></svg>
   <svg class="hero-twig tr" viewBox="0 0 280 380"><use href="#twig"/></svg>
@@ -535,7 +689,9 @@
 </section>
 
 <!-- ═══════════════════════ LOCATION ═══════════════════════ -->
-<section class="location-section" id="location">
+<section class="has-mobile-bg location-section" id="location">
+  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/2.jpg');"></div>
+  <div class="mob-bg-overlay"></div>
   <!-- twig decorations -->
   <svg class="twig-deco tl" viewBox="0 0 280 380"><use href="#twig"/></svg>
   <svg class="twig-deco br" viewBox="0 0 280 380"><use href="#twig"/></svg>
@@ -549,7 +705,7 @@
       <!-- Ceremony -->
       <div class="venue-card reveal-left d1">
         <div class="venue-illustration">
-          <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/ceremony%20placeholder.jpg" alt="Imus Cathedral" loading="lazy">
+          <img src="https://raw.githubusercontent.com/myweddingwebsite/CJandLJ/refs/heads/main/ceremony%20placeholder.jpg" alt="Imus Cathedral" loading="lazy">
         </div>
         <div class="venue-body">
           <span class="venue-type">Ceremony</span>
@@ -564,7 +720,7 @@
       <!-- Reception -->
       <div class="venue-card reveal-right d2">
         <div class="venue-illustration">
-          <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/reception%20placeholder.jpg" alt="Casa Dominguez" loading="lazy">
+          <img src="https://raw.githubusercontent.com/myweddingwebsite/CJandLJ/refs/heads/main/reception%20placeholder.jpg" alt="Casa Dominguez" loading="lazy">
         </div>
         <div class="venue-body">
           <span class="venue-type">Reception</span>
@@ -591,7 +747,9 @@
 </section>
 
 <!-- ═══════════════════════ TIMELINE ═══════════════════════ -->
-<section class="timeline-section" id="timeline">
+<section class="has-mobile-bg timeline-section" id="timeline">
+  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/3.jpg');"></div>
+  <div class="mob-bg-overlay"></div>
   <svg class="twig-deco tl" viewBox="0 0 280 380" style="opacity:0.06;"><use href="#twig"/></svg>
   <svg class="twig-deco mr" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
 
@@ -613,7 +771,9 @@
 </section>
 
 <!-- ═══════════════════════ ATTIRE ═══════════════════════ -->
-<section class="attire-section" id="attire">
+<section class="has-mobile-bg attire-section" id="attire">
+  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/4.jpg');"></div>
+  <div class="mob-bg-overlay"></div>
   <svg class="twig-deco tl" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
   <svg class="twig-deco br" viewBox="0 0 280 380" style="opacity:0.04;"><use href="#twig"/></svg>
 
@@ -621,6 +781,116 @@
     <span class="section-label reveal">Dress Code</span>
     <h2 class="section-title reveal">What to Wear</h2>
     <div class="section-rule reveal"></div>
+
+    <!-- ── Figure Row ── -->
+    <div class="attire-figures-row reveal">
+
+      <!-- Female Guest -->
+      <div class="attire-figure">
+        <svg class="fig-peg" viewBox="0 0 80 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- head -->
+          <circle cx="40" cy="22" r="16" fill="#c8a97e"/>
+          <!-- dress body -->
+          <path d="M28 38 Q24 55 18 100 Q14 130 12 165 L68 165 Q66 130 62 100 Q56 55 52 38 Z" fill="#c4b09a"/>
+          <!-- shoulder seam -->
+          <line x1="28" y1="45" x2="52" y2="45" stroke="#b8a898" stroke-width="1.5" opacity="0.6"/>
+        </svg>
+        <div class="fig-label">Female<br>Guest</div>
+        <div class="fig-color">Brown/Beige</div>
+      </div>
+
+      <!-- Male Guest -->
+      <div class="attire-figure">
+        <svg class="fig-peg" viewBox="0 0 80 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- head -->
+          <circle cx="40" cy="22" r="16" fill="#c8a97e"/>
+          <!-- torso -->
+          <rect x="22" y="40" width="36" height="52" rx="3" fill="#9e8f80"/>
+          <!-- tie -->
+          <rect x="36" y="42" width="8" height="44" rx="2" fill="#c9a96e" opacity="0.7"/>
+          <!-- left leg -->
+          <rect x="22" y="90" width="16" height="72" rx="2" fill="#9e8f80"/>
+          <!-- right leg -->
+          <rect x="42" y="90" width="16" height="72" rx="2" fill="#9e8f80"/>
+        </svg>
+        <div class="fig-label">Male<br>Guest</div>
+        <div class="fig-color">Brown/Beige</div>
+      </div>
+
+      <!-- Godmother -->
+      <div class="attire-figure">
+        <svg class="fig-peg" viewBox="0 0 80 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- head -->
+          <circle cx="40" cy="22" r="16" fill="#c8a97e"/>
+          <!-- dress -->
+          <path d="M28 38 Q24 55 18 100 Q14 130 12 165 L68 165 Q66 130 62 100 Q56 55 52 38 Z" fill="#7a90a8"/>
+          <line x1="28" y1="45" x2="52" y2="45" stroke="#6880a0" stroke-width="1.5" opacity="0.5"/>
+        </svg>
+        <div class="fig-label">Godmother</div>
+        <div class="fig-color">Dusty Blue</div>
+      </div>
+
+      <!-- Godfather -->
+      <div class="attire-figure">
+        <svg class="fig-peg" viewBox="0 0 80 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- head -->
+          <circle cx="40" cy="22" r="16" fill="#c8a97e"/>
+          <!-- torso/jacket -->
+          <rect x="22" y="40" width="36" height="52" rx="3" fill="#2d2d3a"/>
+          <!-- tie - dusty blue -->
+          <rect x="36" y="42" width="8" height="44" rx="2" fill="#7a90a8" opacity="0.9"/>
+          <!-- left leg -->
+          <rect x="22" y="90" width="16" height="72" rx="2" fill="#2d2d3a"/>
+          <!-- right leg -->
+          <rect x="42" y="90" width="16" height="72" rx="2" fill="#2d2d3a"/>
+        </svg>
+        <div class="fig-label">Godfather</div>
+        <div class="fig-color">Black + Dusty Blue</div>
+      </div>
+
+      <!-- Maid of Honor & Bridesmaid -->
+      <div class="attire-figure">
+        <svg class="fig-peg" viewBox="0 0 80 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- head -->
+          <circle cx="40" cy="22" r="16" fill="#c8a97e"/>
+          <!-- dress - moss green -->
+          <path d="M28 38 Q24 55 18 100 Q14 130 12 165 L68 165 Q66 130 62 100 Q56 55 52 38 Z" fill="#4a7c5f"/>
+          <line x1="28" y1="45" x2="52" y2="45" stroke="#3d6b50" stroke-width="1.5" opacity="0.5"/>
+        </svg>
+        <div class="fig-label">Maid of Honor &amp;<br>Bridesmaid</div>
+        <div class="fig-color">Moss Green</div>
+      </div>
+
+      <!-- Best Man & Groomsmen -->
+      <div class="attire-figure">
+        <svg class="fig-peg" viewBox="0 0 80 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- head -->
+          <circle cx="40" cy="22" r="16" fill="#c8a97e"/>
+          <!-- torso/jacket - mid gray -->
+          <rect x="22" y="40" width="36" height="52" rx="3" fill="#6b7280"/>
+          <!-- tie - moss green -->
+          <rect x="36" y="42" width="8" height="44" rx="2" fill="#4a7c5f" opacity="0.9"/>
+          <!-- left leg -->
+          <rect x="22" y="90" width="16" height="72" rx="2" fill="#6b7280"/>
+          <!-- right leg -->
+          <rect x="42" y="90" width="16" height="72" rx="2" fill="#6b7280"/>
+        </svg>
+        <div class="fig-label">Best Man &amp;<br>Groomsmen</div>
+        <div class="fig-color">Mid Gray</div>
+      </div>
+
+    </div>
+    <!-- ── End Figure Row ── -->
+
+    <!-- Color Bar -->
+    <div class="attire-colorbar reveal">
+      <span style="background:#c4b09a; flex:2;"></span>
+      <span style="background:#9e8f80; flex:2;"></span>
+      <span style="background:#7a90a8; flex:1.5;"></span>
+      <span style="background:#2d2d3a; flex:1.5;"></span>
+      <span style="background:#4a7c5f; flex:2;"></span>
+      <span style="background:#6b7280; flex:2;"></span>
+    </div>
 
     <!-- Italic quote -->
     <p class="attire-note reveal">
@@ -718,7 +988,9 @@
 </section>
 
 <!-- ═══════════════════════ ENTOURAGE ═══════════════════════ -->
-<section class="entourage-section" id="entourage">
+<section class="has-mobile-bg entourage-section" id="entourage">
+  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/5.jpg');"></div>
+  <div class="mob-bg-overlay"></div>
   <svg class="twig-deco tl" viewBox="0 0 280 380"><use href="#twig"/></svg>
   <svg class="twig-deco br" viewBox="0 0 280 380"><use href="#twig"/></svg>
   <svg class="twig-deco mr" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
@@ -767,7 +1039,7 @@
           <div class="ent-name">Mr. Ramilito Correa</div><div class="ent-name">Mrs. Ma. Cecilia Correa</div>
           <div class="ent-name">Mr. Tony Salamatin</div><div class="ent-name">Mrs. Adora Salamatin</div>
           <div class="ent-name">Mr. Choi Kyu Jung</div><div class="ent-name">Ms. Mimi Uy</div>
-          <div class="ent-name">Mr. Vincent de Leon</div><div class="ent-name">Mrs. Marilyn Galang</div>
+          <div class="ent-name">Mr. Vincent de Leon</div><div class="ent-name">Mrs. Marily Galang</div>
           <div class="ent-name">Mr. Robert Gozon</div><div class="ent-name">Mrs. Nimfa Gozon</div>
         </div>
       </div>
@@ -791,8 +1063,8 @@
         <div class="entourage-group-title">Best Men</div>
         <div class="ent-1col">
           <div class="ent-name">Jan Rei Salamatin</div>
+          <div class="ent-name">Jun Jun Taguba</div>
           <div class="ent-name">Christian Maurice Esteban</div>
-          <div class="ent-name">JunJun Taguba</div>
         </div>
       </div>
 
@@ -826,15 +1098,15 @@
         <div class="ent-roles-2col">
           <div>
             <span class="ent-role-title">Groomsmen</span>
-            <div class="ent-name">Earl Nique Floi Cruz</div>
+            <div class="ent-name">Frangelo Teñido</div>
             <div class="ent-name">Christian Jay Laderas</div>
             <div class="ent-name">Mark Joseph Jao</div>
             <div class="ent-name">Frederick Du</div>
             <div class="ent-name">Rafhael Sinchongco</div>
             <div class="ent-name">John Lloyd Socobos</div>
             <div class="ent-name">Dennis Domingo Jr.</div>
+            <div class="ent-name">Earl Nique Floie Cruz</div>
             <div class="ent-name">Renz Amiel Reyes</div>
-            <div class="ent-name">Frangelo Teñido</div>
           </div>
           <div>
             <span class="ent-role-title">Bridesmaids</span>
@@ -844,10 +1116,9 @@
             <div class="ent-name">Reign Bernardo</div>
             <div class="ent-name">Christal Aila Pabalan</div>
             <div class="ent-name">Christine Joy Valencia</div>
+            <div class="ent-name">Michelle Anne Montes</div>
             <div class="ent-name">Rose Ann Garcia</div>
             <div class="ent-name">Inah Marie</div>
-            <div class="ent-name">Michelle Anne Montes</div>
-
           </div>
         </div>
       </div>
@@ -893,7 +1164,9 @@
 </section>
 
 <!-- ═══════════════════════ GIFT ═══════════════════════ -->
-<section class="gift-section" id="gifts">
+<section class="has-mobile-bg gift-section" id="gifts">
+  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/6.jpg');"></div>
+  <div class="mob-bg-overlay"></div>
   <svg class="twig-deco tl" viewBox="0 0 280 380" style="opacity:0.06;"><use href="#twig"/></svg>
   <svg class="twig-deco br" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
 
@@ -901,9 +1174,8 @@
   <h2 class="section-title">Gift Registry</h2>
   <div class="section-rule"></div>
   <p class="gift-intro">
-    Your love, prayers, and well wishes are the greatest gifts we could ever receive as we begin this new chapter together. Should you wish to bless us beyond your heartfelt wishes, a monetary gift would be received with sincere gratitude as we build a new life together.<br><br>
-    As many have thoughtfully asked, we've made a few options available should you wish to bless us whether it’s for our future home or our future kids. Whatever you choose to give, know that it comes to us as a gift of love. <br><br>
-   Thank you for celebrating this special day with us. Your love, generosity, and heartfelt blessings mean more to us than words can express, and we are truly grateful to have you beside us as we begin the new chapter of our lives.
+    We would be truly honored to celebrate this special day with you in person, though we completely understand if you are unable to join us. Your prayers and well wishes for our marriage are the greatest blessings we could receive.<br><br>
+    As some have thoughtfully asked, we have made options available should you wish to share your blessings — whichever you'd like to bless, your choice, with our gratitude.
   </p>
   <div class="gift-cards">
     <div class="gift-card">
@@ -911,7 +1183,7 @@
       <div class="gift-purpose">FutureHome</div>
       <div class="gift-acct">••••••••9632</div>
       <div class="qr-img">
-        <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/BDO%20QR%20Placeholder.jpg" alt="BDO QR Code" loading="lazy">
+        <img src="https://raw.githubusercontent.com/myweddingwebsite/CJandLJ/refs/heads/main/BDO%20QR%20Placeholder.jpg" alt="BDO QR Code" loading="lazy">
       </div>
     </div>
     <div class="gift-card">
@@ -919,7 +1191,7 @@
       <div class="gift-purpose">FutureKids</div>
       <div class="gift-acct">••••••••••594</div>
       <div class="qr-img">
-        <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/BPI%20placeholder.jpg" alt="BPI QR Code" loading="lazy">
+        <img src="https://github.com/myweddingwebsite/CJandLJ/blob/main/BPI%20placeholder.jpg?raw=true" alt="BPI QR Code" loading="lazy">
       </div>
     </div>
   </div>
@@ -927,7 +1199,9 @@
 </section>
 
 <!-- ═══════════════════════ UPLOAD ═══════════════════════ -->
-<section class="uploads-section" id="upload">
+<section class="has-mobile-bg uploads-section" id="upload">
+  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/7.jpg');"></div>
+  <div class="mob-bg-overlay"></div>
   <svg class="twig-deco tr" viewBox="0 0 280 380"><use href="#twig"/></svg>
   <svg class="twig-deco bl" viewBox="0 0 280 380"><use href="#twig"/></svg>
 
@@ -945,33 +1219,188 @@
   </div>
 </section>
 
+<!-- ═══════════════════════ VIDEO ═══════════════════════ -->
+<section class="video-section has-mobile-bg" id="video">
+  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/7.jpg');"></div>
+  <div class="mob-bg-overlay"></div>
+  <svg class="twig-deco tl" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
+  <svg class="twig-deco br" viewBox="0 0 280 380" style="opacity:0.04;"><use href="#twig"/></svg>
+  <div class="container">
+    <span class="section-label reveal">Before Forever</span>
+    <h2 class="section-title reveal">Our Prenuptial Video</h2>
+    <div class="section-rule reveal"></div>
+    <div class="video-wrap reveal">
+      <iframe
+        src="https://www.youtube.com/embed/KkRTdKnBdpM?rel=0&modestbranding=1&color=white"
+        title="CJ & LJ Prenuptial Video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+    <p class="video-caption reveal">A glimpse of our love story before the big day.</p>
+  </div>
+</section>
+
 <!-- ═══════════════════════ GALLERY ═══════════════════════ -->
 <div class="photo-section" id="photos">
   <svg class="twig-deco tl" viewBox="0 0 280 380" style="opacity:0.06;"><use href="#twig"/></svg>
   <svg class="twig-deco br" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
 
-  <div style="text-align:center;margin-bottom:1.5rem;position:relative;z-index:2;">
-    <span class="section-label" style="color:rgba(255,255,255,0.5)">Gallery</span>
+  <div style="text-align:center;margin-bottom:2rem;position:relative;z-index:2;">
+    <span class="section-label" style="color:rgba(255,255,255,0.5)">Our Story</span>
     <h2 class="section-title" style="color:white">Our Moments</h2>
     <div class="section-rule" style="background:var(--gold-light)"></div>
   </div>
-  <div class="photo-placeholder">
-    <div class="ph large">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-      Insert Photo Here
+
+  <div class="gallery-grid">
+    <div class="gallery-item reveal" onclick="openLightbox(0)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/1.jpg" alt="CJ and LJ photo 1" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
     </div>
-    <div class="ph">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-      Insert Photo
+    <div class="gallery-item reveal" onclick="openLightbox(1)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/2.jpg" alt="CJ and LJ photo 2" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
     </div>
-    <div class="ph tall">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-      Insert Photo
+    <div class="gallery-item reveal" onclick="openLightbox(2)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/3.jpg" alt="CJ and LJ photo 3" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
     </div>
-    <div class="ph">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-      Insert Photo
+    <div class="gallery-item reveal" onclick="openLightbox(3)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/4.jpg" alt="CJ and LJ photo 4" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
     </div>
+    <div class="gallery-item reveal" onclick="openLightbox(4)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/5.jpg" alt="CJ and LJ photo 5" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(5)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/6.jpg" alt="CJ and LJ photo 6" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(6)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/7.jpg" alt="CJ and LJ photo 7" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(7)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/8.jpg" alt="CJ and LJ photo 8" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(8)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/9.jpg" alt="CJ and LJ photo 9" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(9)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/10.jpg" alt="CJ and LJ photo 10" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(10)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/11.jpg" alt="CJ and LJ photo 11" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(11)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/12.jpg" alt="CJ and LJ photo 12" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(12)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/13.jpg" alt="CJ and LJ photo 13" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(13)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/14.jpg" alt="CJ and LJ photo 14" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(14)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/15.jpg" alt="CJ and LJ photo 15" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(15)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/16.jpg" alt="CJ and LJ photo 16" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+    <div class="gallery-item reveal" onclick="openLightbox(16)">
+      <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/17.jpg" alt="CJ and LJ photo 17" loading="lazy">
+      <div class="gallery-item-overlay">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+    <button class="lb-close" onclick="closeLightbox()">&#x2715;</button>
+    <button class="lb-prev" onclick="lbNav(-1)">&#8592;</button>
+    <div class="lightbox-inner">
+      <img class="lightbox-img" id="lb-img" src="" alt="">
+    </div>
+    <button class="lb-next" onclick="lbNav(1)">&#8594;</button>
+    <div class="lb-counter" id="lb-counter"></div>
   </div>
 </div>
 
@@ -986,14 +1415,11 @@
     <p>Let us know if you can make it to our celebration.</p>
   </div>
   <div class="rsvp-frame-wrap">
-  <a
-    href="https://script.google.com/macros/s/AKfycbxcs2X3g1zkDxAPh0fZrFYfrNJkepcijrTW8m_Hp3gTAB-KRef7sCmXIMxGY228gEcM/exec"
-    target="_blank"
-    rel="noopener"
-    class="rsvp-btn">
-    Submit Your RSVP
-  </a>
-</div>
+    <iframe
+      src="https://script.google.com/macros/s/AKfycbxcs2X3g1zkDxAPh0fZrFYfrNJkepcijrTW8m_Hp3gTAB-KRef7sCmXIMxGY228gEcM/exec"
+      title="RSVP Form" loading="lazy" allowfullscreen>
+    </iframe>
+  </div>
 </div>
 
 <!-- ═══════════════════════ CLOSING ═══════════════════════ -->
@@ -1054,6 +1480,84 @@
   document.querySelectorAll('.entourage-group').forEach((el, i) => {
     el.style.transitionDelay = (i * 0.06) + 's';
   });
+
+  // ── LIGHTBOX ──
+  const GALLERY_IMGS = [
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/1.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/2.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/3.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/4.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/5.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/6.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/7.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/8.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/9.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/10.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/11.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/12.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/13.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/14.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/15.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/16.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/17.jpg',
+  ];
+  let lbIdx = 0;
+
+  function openLightbox(idx) {
+    lbIdx = idx;
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lb-img');
+    const counter = document.getElementById('lb-counter');
+    img.src = GALLERY_IMGS[lbIdx];
+    counter.textContent = (lbIdx + 1) + ' / ' + GALLERY_IMGS.length;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeLightboxOutside(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  }
+  function lbNav(dir) {
+    lbIdx = (lbIdx + dir + GALLERY_IMGS.length) % GALLERY_IMGS.length;
+    const img = document.getElementById('lb-img');
+    img.style.opacity = '0';
+    img.style.transform = 'scale(0.96)';
+    img.style.transition = 'opacity 0.2s, transform 0.2s';
+    setTimeout(() => {
+      img.src = GALLERY_IMGS[lbIdx];
+      img.onload = () => {
+        img.style.opacity = '1';
+        img.style.transform = 'scale(1)';
+      };
+      document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + GALLERY_IMGS.length;
+    }, 180);
+  }
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') lbNav(1);
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // ── MOBILE NAV BACKGROUND ──
+  // Set a random bg image on nav for mobile
+  const bgImgs = [
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/2.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/5.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/9.jpg',
+    'https://ik.imagekit.io/jcsquo5nq/cjandlj/13.jpg',
+  ];
+  if (window.innerWidth <= 768) {
+    const pick = bgImgs[Math.floor(Math.random() * bgImgs.length)];
+    document.querySelector('nav').style.backgroundImage = 'linear-gradient(rgba(10,18,8,0.82),rgba(10,18,8,0.82)), url(' + pick + ')';
+    document.querySelector('nav').style.backgroundSize = 'cover';
+    document.querySelector('nav').style.backgroundPosition = 'center';
+  }
 </script>
 </body>
 </html>
