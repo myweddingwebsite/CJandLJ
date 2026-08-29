@@ -321,6 +321,44 @@
 
   /* ── ENTOURAGE ── */
   .entourage-section { background: var(--cream-dark); }
+
+  /* Full photo background on entourage - desktop + mobile */
+  .entourage-photo-bg {
+    position: relative;
+    background: transparent;
+  }
+  .ent-photo-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background-image: url('https://ik.imagekit.io/jcsquo5nq/cjandlj/9.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  .ent-photo-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: rgba(10, 20, 8, 0.72);
+  }
+  .entourage-photo-bg > .container { position: relative; z-index: 2; }
+  .entourage-photo-bg > svg.twig-deco { z-index: 2; }
+
+  /* White text overrides for entourage */
+  .entourage-photo-bg .section-label { color: rgba(255,255,255,0.6); }
+  .entourage-photo-bg .section-title { color: white; }
+  .entourage-photo-bg .section-rule { background: var(--gold-light); opacity: 1; }
+  .entourage-photo-bg .entourage-group-title {
+    color: var(--gold-light);
+  }
+  .entourage-photo-bg .entourage-group-title::after {
+    background: var(--gold-light);
+    opacity: 0.5;
+  }
+  .entourage-photo-bg .ent-role-title { color: rgba(255,255,255,0.55); }
+  .entourage-photo-bg .ent-name { color: rgba(255,255,255,0.92); }
+
+  /* Mobile: disable fixed attachment (iOS doesn't support it) */
+  @media (max-width: 768px) {
+    .ent-photo-bg { background-attachment: scroll; }
+  }
   .entourage-block { max-width: 860px; margin: 0 auto; }
   .entourage-group { margin-bottom: 3rem; }
   .entourage-group-title { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--sage); text-align: center; margin-bottom: 1.2rem; }
@@ -705,7 +743,7 @@
       <!-- Ceremony -->
       <div class="venue-card reveal-left d1">
         <div class="venue-illustration">
-          <img src="https://raw.githubusercontent.com/myweddingwebsite/CJandLJ/refs/heads/main/ceremony%20placeholder.jpg" alt="Imus Cathedral" loading="lazy">
+          <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/ceremony%20placeholder.jpg" alt="Imus Cathedral" loading="lazy">
         </div>
         <div class="venue-body">
           <span class="venue-type">Ceremony</span>
@@ -720,7 +758,7 @@
       <!-- Reception -->
       <div class="venue-card reveal-right d2">
         <div class="venue-illustration">
-          <img src="https://raw.githubusercontent.com/myweddingwebsite/CJandLJ/refs/heads/main/reception%20placeholder.jpg" alt="Casa Dominguez" loading="lazy">
+          <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/reception%20placeholder.jpg" alt="Casa Dominguez" loading="lazy">
         </div>
         <div class="venue-body">
           <span class="venue-type">Reception</span>
@@ -988,9 +1026,9 @@
 </section>
 
 <!-- ═══════════════════════ ENTOURAGE ═══════════════════════ -->
-<section class="has-mobile-bg entourage-section" id="entourage">
-  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/5.jpg');"></div>
-  <div class="mob-bg-overlay"></div>
+<section class="entourage-section entourage-photo-bg" id="entourage">
+  <div class="ent-photo-bg"></div>
+  <div class="ent-photo-overlay"></div>
   <svg class="twig-deco tl" viewBox="0 0 280 380"><use href="#twig"/></svg>
   <svg class="twig-deco br" viewBox="0 0 280 380"><use href="#twig"/></svg>
   <svg class="twig-deco mr" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
@@ -1183,7 +1221,7 @@
       <div class="gift-purpose">FutureHome</div>
       <div class="gift-acct">••••••••9632</div>
       <div class="qr-img">
-        <img src="https://raw.githubusercontent.com/myweddingwebsite/CJandLJ/refs/heads/main/BDO%20QR%20Placeholder.jpg" alt="BDO QR Code" loading="lazy">
+        <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/BDO%20QR%20Placeholder.jpg" alt="BDO QR Code" loading="lazy">
       </div>
     </div>
     <div class="gift-card">
@@ -1191,7 +1229,7 @@
       <div class="gift-purpose">FutureKids</div>
       <div class="gift-acct">••••••••••594</div>
       <div class="qr-img">
-        <img src="https://github.com/myweddingwebsite/CJandLJ/blob/main/BPI%20placeholder.jpg?raw=true" alt="BPI QR Code" loading="lazy">
+        <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/BPI%20placeholder.jpg" alt="BPI QR Code" loading="lazy">
       </div>
     </div>
   </div>
