@@ -25,6 +25,7 @@
   /* ── MOBILE SECTION BG IMAGES ── */
   .has-mobile-bg {
     position: relative;
+    overflow: hidden;
   }
   .has-mobile-bg .mob-bg {
     display: none;
@@ -33,26 +34,39 @@
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
+    transition: opacity 0.4s;
   }
-  .has-mobile-bg > * { position: relative; z-index: 2; }
+  .has-mobile-bg .mob-bg-overlay {
+    display: none;
+    position: absolute; inset: 0;
+    z-index: 1;
+  }
   @media (max-width: 768px) {
+    /* Show mobile bg images */
     .has-mobile-bg .mob-bg { display: block; }
     .has-mobile-bg .mob-bg-overlay {
       display: block;
-      position: absolute; inset: 0;
       background: rgba(10,18,8,0.72);
-      z-index: 1;
     }
+    /* All content inside has-mobile-bg sections sits above overlay */
+    .has-mobile-bg .container,
+    .has-mobile-bg .twig-deco,
+    .has-mobile-bg > span,
+    .has-mobile-bg > h2,
+    .has-mobile-bg > div:not(.mob-bg):not(.mob-bg-overlay),
+    .has-mobile-bg > p { position: relative; z-index: 2; }
     /* Override text colors on bg-image sections for readability */
-    .has-mobile-bg .section-label,
-    .has-mobile-bg .section-title,
-    .has-mobile-bg .section-rule { color: white !important; }
+    .has-mobile-bg .section-label { color: rgba(255,255,255,0.65) !important; }
+    .has-mobile-bg .section-title { color: white !important; }
     .has-mobile-bg .section-rule { background: var(--gold-light) !important; opacity: 1 !important; }
-    /* Nav on mobile gets photo bg */
-    nav { background: rgba(10,18,8,0.82) !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
+    /* Note cards, name text */
+    .has-mobile-bg .note-item { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.88); border-left-color: var(--gold-light); }
+    .has-mobile-bg .note-item strong { color: white; }
+    /* Nav on mobile gets dark photo bg */
+    nav { background: rgba(10,18,8,0.88) !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
     nav .nav-logo { color: var(--gold-light) !important; }
     nav .nav-toggle span { background: white !important; }
-    .mobile-menu { background: rgba(10,18,8,0.95) !important; }
+    .mobile-menu { background: rgba(10,18,8,0.96) !important; }
     .mobile-menu a { color: rgba(255,255,255,0.85) !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
   }
 
@@ -88,6 +102,7 @@
   .twig-deco {
     position: absolute; pointer-events: none; z-index: 1;
     opacity: 0.07;
+    pointer-events: none;
   }
   .twig-deco.tl { top: -20px; left: -40px; transform: rotate(15deg); width: 320px; }
   .twig-deco.tr { top: -10px; right: -40px; transform: rotate(-160deg); width: 280px; }
@@ -320,7 +335,7 @@
   .attire-bottom-note strong { font-style: normal; color: white; }
 
   /* ── ENTOURAGE ── */
-  .entourage-section { background: var(--cream-dark); }
+  .entourage-section { background: var(--cream-dark); position: relative; overflow: hidden; }
 
   /* Full photo background on entourage - desktop + mobile */
   .entourage-photo-bg {
@@ -331,15 +346,18 @@
     position: absolute; inset: 0; z-index: 0;
     background-image: url('https://ik.imagekit.io/jcsquo5nq/cjandlj/9.jpg');
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-position: center top;
+    background-attachment: scroll;
   }
   .ent-photo-overlay {
     position: absolute; inset: 0; z-index: 1;
-    background: rgba(10, 20, 8, 0.72);
+    background: rgba(8, 16, 6, 0.68);
   }
-  .entourage-photo-bg > .container { position: relative; z-index: 2; }
-  .entourage-photo-bg > svg.twig-deco { z-index: 2; }
+  .entourage-photo-bg > .container { position: relative; z-index: 3; }
+  .entourage-photo-bg > svg.twig-deco { position: absolute; z-index: 2; }
+  /* Entourage section has overflow:hidden from has-mobile-bg but this section 
+     uses its own bg system so remove that constraint */
+  .entourage-photo-bg { overflow: visible; }
 
   /* White text overrides for entourage */
   .entourage-photo-bg .section-label { color: rgba(255,255,255,0.6); }
@@ -355,10 +373,7 @@
   .entourage-photo-bg .ent-role-title { color: rgba(255,255,255,0.55); }
   .entourage-photo-bg .ent-name { color: rgba(255,255,255,0.92); }
 
-  /* Mobile: disable fixed attachment (iOS doesn't support it) */
-  @media (max-width: 768px) {
-    .ent-photo-bg { background-attachment: scroll; }
-  }
+
   .entourage-block { max-width: 860px; margin: 0 auto; }
   .entourage-group { margin-bottom: 3rem; }
   .entourage-group-title { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--sage); text-align: center; margin-bottom: 1.2rem; }
