@@ -718,7 +718,23 @@
     .has-mobile-bg.video-section { background: transparent; }
 
     .venue-cards { grid-template-columns: 1fr; }
-    .notes-grid { grid-template-columns: 1fr; }
+    .notes-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    position: relative;
+    z-index: 4;
+}
+
+.notes-grid .note-item {
+    width: 100%;
+    min-width: 0;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
 
     .timeline-track { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
     .timeline-track::before { top: 0; left: 27px; right: auto; bottom: 0; width: 1px; height: 100%; }
@@ -927,7 +943,7 @@
     Guests are kindly requested to arrive 15 minutes before 1:30 PM<br>
     to allow for a prompt start, as the church observes strict timing.
   </p>
- <br> <br>
+ <br><br>
   <span class="section-label reveal" style="margin-bottom:1rem;">Please Take Note</span>
     <div class="notes-grid reveal">
       <div class="note-item">🕐 <span>We kindly ask that you <strong>arrive on time at the church ceremony</strong> and <strong>stay with us until the end</strong> of the wedding reception program.</span></div>
