@@ -429,55 +429,7 @@ nav > * {
   }
   .attire-bottom-note strong { font-style: normal; color: white; }
 
-  /* ── ENTOURAGE ── */
-  .entourage-section { background: var(--cream-dark); position: relative; overflow: hidden; }
-
-  /* Full photo background on entourage - desktop + mobile */
-  .entourage-photo-bg {
-    position: relative;
-    background: transparent;
-  }
-  .ent-photo-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background-image: url('https://ik.imagekit.io/jcsquo5nq/cjandlj/9.jpg');
-    background-size: cover;
-    background-position: center top;
-    background-attachment: scroll;
-  }
-  .ent-photo-overlay {
-    position: absolute; inset: 0; z-index: 1;
-    background: rgba(8, 16, 6, 0.68);
-  }
-  .entourage-photo-bg > .container { position: relative; z-index: 3; }
-  .entourage-photo-bg > svg.twig-deco { position: absolute; z-index: 2; }
-  /* Entourage section has overflow:hidden from has-mobile-bg but this section 
-     uses its own bg system so remove that constraint */
-  .entourage-photo-bg { overflow: visible; }
-
-  /* White text overrides for entourage (desktop + mobile) */
-  .entourage-photo-bg .section-label { color: rgba(255,255,255,0.6) !important; }
-  .entourage-photo-bg .section-title { color: white !important; }
-  .entourage-photo-bg .section-rule { background: var(--gold-light) !important; opacity: 1 !important; }
-  .entourage-photo-bg .entourage-group-title { color: var(--gold-light) !important; }
-  .entourage-photo-bg .entourage-group-title::after { background: var(--gold-light); opacity: 0.5; }
-  .entourage-photo-bg .ent-role-title { color: rgba(255,255,255,0.6) !important; }
-  .entourage-photo-bg .ent-name { color: rgba(255,255,255,0.92) !important; }
-
-
-  .entourage-block { max-width: 860px; margin: 0 auto; }
-  .entourage-group { margin-bottom: 3rem; }
-  .entourage-group-title { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--sage); text-align: center; margin-bottom: 1.2rem; }
-  .entourage-group-title::after { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); margin: 0.6rem auto 0; opacity: 0.6; }
-
-  /* 2-column names grid */
-  .ent-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.2rem 3rem; max-width: 680px; margin: 0 auto; }
-  /* 1-column centered */
-  .ent-1col { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
-  /* 2-column role boxes */
-  .ent-roles-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 3rem; max-width: 680px; margin: 0 auto; text-align: center; }
-  .ent-role-title { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--sage); display: block; margin-bottom: 0.5rem; }
-  .ent-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--charcoal); text-align: center; line-height: 1.9; }
-
+  
   /* ── GIFT ── */
   /* ── GIFT SECTION ── */
   .gift-section {
@@ -869,10 +821,6 @@ nav > * {
     .attire-note { border: none; padding: 0; text-align: center; }
     .attire-bottom-note { padding: 1rem; }
 
-    /* Entourage — FORCE 2 columns always */
-    .ent-2col { grid-template-columns: 1fr 1fr !important; gap: 0.1rem 0.6rem; }
-    .ent-roles-2col { grid-template-columns: 1fr 1fr !important; gap: 0.8rem 0.6rem; }
-    .ent-name { font-size: 0.78rem; }
 
     .rsvp-frame-wrap iframe { height: 900px; }
 
@@ -897,7 +845,6 @@ nav > * {
     <li><a href="#location">Location</a></li>
     <li><a href="#timeline">Timeline</a></li>
     <li><a href="#attire">Attire</a></li>
-    <li><a href="#entourage">Entourage</a></li>
     <li><a href="#gifts">Gifts</a></li>
     <li><a href="#photos">Gallery</a></li>
     <li><a href="#upload">Upload</a></li>
@@ -911,7 +858,6 @@ nav > * {
   <a href="#location" onclick="closeMenu()">Location</a>
   <a href="#timeline" onclick="closeMenu()">Timeline</a>
   <a href="#attire" onclick="closeMenu()">Attire</a>
-  <a href="#entourage" onclick="closeMenu()">Entourage</a>
   <a href="#gifts" onclick="closeMenu()">Gifts</a>
   <a href="#photos" onclick="closeMenu()">Gallery</a>
   <a href="#upload" onclick="closeMenu()">Upload</a>
@@ -1292,181 +1238,6 @@ nav > * {
   </div>
 </section>
 
-<!-- ═══════════════════════ ENTOURAGE ═══════════════════════ -->
-<section class="entourage-section entourage-photo-bg" id="entourage">
-  <div class="ent-photo-bg"></div>
-  <div class="ent-photo-overlay"></div>
-  <svg class="twig-deco tl" viewBox="0 0 280 380"><use href="#twig"/></svg>
-  <svg class="twig-deco br" viewBox="0 0 280 380"><use href="#twig"/></svg>
-  <svg class="twig-deco mr" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
-
-  <div class="container">
-    <span class="section-label reveal">Our People</span>
-    <h2 class="section-title reveal">The Entourage</h2>
-    <div class="section-rule reveal"></div>
-    <div class="entourage-block">
-
-      <!-- 1. Parents of the Couple — 2 columns -->
-      <div class="entourage-group reveal">
-        <div class="entourage-group-title">Parents of the Couple</div>
-        <div class="ent-2col">
-          <div class="ent-name">Mr. Joel Redondo</div>
-          <div class="ent-name">Mr. Alvin de Leon</div>
-          <div class="ent-name">Mrs. Rizalina Redondo</div>
-          <div class="ent-name">Mrs. Evangeline de Leon</div>
-        </div>
-      </div>
-
-      <!-- 2. Grandparents — 2 columns -->
-      <div class="entourage-group reveal">
-        <div class="entourage-group-title">Grandparents of the Couple</div>
-        <div class="ent-2col">
-          <div class="ent-name">Mr. Martin Teñido</div>
-          <div class="ent-name">Mr. Ramon de Leon</div>
-          <div class="ent-name">Mrs. Eufemia Teñido</div>
-          <div class="ent-name">Mrs. Alicia de Leon</div>
-        </div>
-      </div>
-
-      <!-- 3. Ninong and Ninang — 2 columns -->
-      <div class="entourage-group reveal">
-        <div class="entourage-group-title">Ninong and Ninang</div>
-        <div class="ent-2col">
-          <div class="ent-name">Mr. Dennis Laurente</div><div class="ent-name">Mrs. Aileen Laurente</div>
-          <div class="ent-name">Mr. Bethoven Arile</div><div class="ent-name">Mrs. Teresa Arile</div>
-          <div class="ent-name">Mr. Gary Balmaceda</div><div class="ent-name">Mrs. Irene Balmaceda</div>
-          <div class="ent-name">Mr. Diego Cruz III</div><div class="ent-name">Mrs. Lorena Cruz</div>
-          <div class="ent-name">Mr. Roldan Redondo</div><div class="ent-name">Ms. Carina Formiloza</div>
-          <div class="ent-name">Mr. Christopher Faral</div><div class="ent-name">Ms. Ivy Almario</div>
-          <div class="ent-name">Mr. Arnold Wagayen</div><div class="ent-name">Ms. Cynthia Almario</div>
-          <div class="ent-name">Mr. Clifford Ariola</div><div class="ent-name">Mrs. Leah Mangune</div>
-          <div class="ent-name">Mr. Winifredo Olvido</div><div class="ent-name">Mrs. Carlota Pagsanjan</div>
-          <div class="ent-name">Mr. Ramilito Correa</div><div class="ent-name">Mrs. Ma. Cecilia Correa</div>
-          <div class="ent-name">Mr. Tony Salamatin</div><div class="ent-name">Mrs. Adora Salamatin</div>
-          <div class="ent-name">Mr. Choi Kyu Jung</div><div class="ent-name">Ms. Mimi Uy</div>
-          <div class="ent-name">Mr. Vincent de Leon</div><div class="ent-name">Mrs. Marily Galang</div>
-          <div class="ent-name">Mr. Robert Gozon</div><div class="ent-name">Mrs. Nimfa Gozon</div>
-        </div>
-      </div>
-
-      <!-- 4. Man of Honor & Matron of Honor — 2 columns -->
-      <div class="entourage-group reveal">
-        <div class="ent-roles-2col">
-          <div>
-            <span class="ent-role-title">Man of Honor</span>
-            <div class="ent-name">Lance Justin de Leon</div>
-          </div>
-          <div>
-            <span class="ent-role-title">Matron of Honor</span>
-            <div class="ent-name">Czarina Jeane Sabenorio</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. Best Men — 1 column centered -->
-      <div class="entourage-group reveal">
-        <div class="entourage-group-title">Best Men</div>
-        <div class="ent-1col">
-          <div class="ent-name">Jan Rei Salamatin</div>
-          <div class="ent-name">Jun Jun Taguba</div>
-          <div class="ent-name">Christian Maurice Esteban</div>
-        </div>
-      </div>
-
-      <!-- 6. Candle Sponsor & Cord Sponsor — 2 columns -->
-      <div class="entourage-group reveal">
-        <div class="ent-roles-2col">
-          <div>
-            <span class="ent-role-title">Candle Sponsor</span>
-            <div class="ent-name">Jean Patrick Casano</div>
-            <div class="ent-name">Claire Josephine Aranda</div>
-          </div>
-          <div>
-            <span class="ent-role-title">Cord Sponsor</span>
-            <div class="ent-name">King Reniel Rodriguez</div>
-            <div class="ent-name">Alicia Nicole Allorde</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 7. Veil Sponsor — 1 column centered -->
-      <div class="entourage-group reveal">
-        <div class="entourage-group-title">Veil Sponsor</div>
-        <div class="ent-1col">
-          <div class="ent-name">John Emmanuel Francis Abdon</div>
-          <div class="ent-name">Joylyn May Catalan</div>
-        </div>
-      </div>
-
-      <!-- 8. Groomsmen & Bridesmaids — 2 columns -->
-      <div class="entourage-group reveal">
-        <div class="ent-roles-2col">
-          <div>
-            <span class="ent-role-title">Groomsmen</span>
-            <div class="ent-name">Frangelo Teñido</div>
-            <div class="ent-name">Christian Jay Laderas</div>
-            <div class="ent-name">Mark Joseph Jao</div>
-            <div class="ent-name">Frederick Du</div>
-            <div class="ent-name">Rafhael Sinchongco</div>
-            <div class="ent-name">John Lloyd Socobos</div>
-            <div class="ent-name">Dennis Domingo Jr.</div>
-            <div class="ent-name">Earl Nique Floie Cruz</div>
-            <div class="ent-name">Renz Amiel Reyes</div>
-          </div>
-          <div>
-            <span class="ent-role-title">Bridesmaids</span>
-            <div class="ent-name">Crizelle Joyce Redondo</div>
-            <div class="ent-name">Queenie Laurente</div>
-            <div class="ent-name">Alyanna Laurente</div>
-            <div class="ent-name">Reign Bernardo</div>
-            <div class="ent-name">Christal Aila Pabalan</div>
-            <div class="ent-name">Christine Joy Valencia</div>
-            <div class="ent-name">Michelle Anne Montes</div>
-            <div class="ent-name">Rose Ann Garcia</div>
-            <div class="ent-name">Inah Marie</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 9. Junior Bridesmaids — 1 column centered -->
-      <div class="entourage-group reveal">
-        <div class="entourage-group-title">Junior Bridesmaids</div>
-        <div class="ent-1col">
-          <div class="ent-name">Cristelle Jenica Redondo</div>
-          <div class="ent-name">Arianne Shanelle Aeiou de Leon</div>
-          <div class="ent-name">Althea Joy Lianza</div>
-          <div class="ent-name">Marianne Ashlee de Leon</div>
-          <div class="ent-name">Aliyah Joselle Lianza</div>
-        </div>
-      </div>
-
-      <!-- 10. Ring Bearers & Bible Bearers — 2 columns -->
-      <div class="entourage-group reveal">
-        <div class="ent-roles-2col">
-          <div>
-            <span class="ent-role-title">Ring Bearers</span>
-            <div class="ent-name">John Vincent dela Cruz</div>
-            <div class="ent-name">Alonzo Louis Villavelez</div>
-          </div>
-          <div>
-            <span class="ent-role-title">Bible Bearers</span>
-            <div class="ent-name">Gabriel Laurente</div>
-            <div class="ent-name">Josiah Grae Laurente</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 11. Coin Bearer — 1 column centered -->
-      <div class="entourage-group reveal">
-        <div class="entourage-group-title">Coin Bearer</div>
-        <div class="ent-1col">
-          <div class="ent-name">Arwin Ezikiel de Leon</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════ GIFT ═══════════════════════ -->
 <section class="has-mobile-bg gift-section" id="gifts">
