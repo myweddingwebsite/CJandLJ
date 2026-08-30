@@ -389,20 +389,46 @@
   .ent-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--charcoal); text-align: center; line-height: 1.9; }
 
   /* ── GIFT ── */
-  .gift-section { background: var(--sage); padding: 80px 2rem; position: relative; overflow: hidden; }
+  /* ── GIFT SECTION ── */
+  .gift-section {
+    background: var(--sage);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .gift-inner {
+    position: relative;
+    z-index: 3;
+    padding: 80px 2rem;
+    max-width: 100%;
+  }
   .gift-section .section-label { color: rgba(255,255,255,0.6); }
   .gift-section .section-title { color: white; }
   .gift-section .section-rule { background: var(--gold-light); }
-  .gift-intro { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1rem, 3vw, 1.15rem); color: rgba(255,255,255,0.8); max-width: 640px; margin: 0 auto 3rem; line-height: 1.9; }
-  .gift-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 640px; margin: 0 auto; }
+  .gift-intro {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 3vw, 1.15rem);
+    color: rgba(255,255,255,0.85);
+    max-width: 640px;
+    margin: 0 auto 3rem;
+    line-height: 1.9;
+  }
+  .gift-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
   .gift-card {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 6px;
-    padding: 2rem;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
     text-align: center;
   }
-  /* gift-card mobile handled in qr media block */
   .gift-bank { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 600; }
   .gift-bank.bdo { color: #0066cc; background: white; display: inline-block; padding: 4px 14px; border-radius: 4px; }
   .gift-bank.bpi { color: #cc0000; background: white; display: inline-block; padding: 4px 14px; border-radius: 4px; }
@@ -412,47 +438,53 @@
     width: 160px;
     height: 160px;
     border-radius: 6px;
-    overflow: visible;
+    overflow: hidden;
     margin: 0 auto;
-    border: 3px solid rgba(255,255,255,0.3);
+    border: 4px solid rgba(255,255,255,0.4);
     display: block;
-    background: white;
+    background: #fff;
   }
   .qr-img img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    border-radius: 4px;
-  }
-  @media (max-width: 768px) {
-    .qr-img {
-      width: min(180px, 65vw);
-      height: min(180px, 65vw);
-      margin: 0.5rem auto;
-      border: 3px solid rgba(255,255,255,0.8);
-      background: #fff;
-      display: block !important;
-    }
-    .qr-img img {
-      display: block !important;
-      width: 100% !important;
-      height: 100% !important;
-      opacity: 1 !important;
-    }
-    /* Gift cards solid on mobile */
-    .gift-card {
-      background: rgba(10,28,10,0.88) !important;
-      border: 1px solid rgba(255,255,255,0.3) !important;
-      padding: 1.5rem 1rem !important;
-    }
-    .gift-cards {
-      gap: 1rem;
-    }
+    display: block;
+    border-radius: 3px;
   }
   .gift-closing { text-align: center; margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(255,255,255,0.7); font-size: 1.1rem; }
+
+  /* Gift — mobile */
+  @media (max-width: 768px) {
+    .gift-inner { padding: 60px 1.2rem; }
+    .gift-cards {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      max-width: 100%;
+    }
+    .gift-card {
+      background: rgba(10,30,10,0.82);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px;
+      padding: 1.2rem 0.8rem;
+    }
+    .qr-img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      max-width: 140px;
+      border: 3px solid rgba(255,255,255,0.7);
+      background: #fff;
+    }
+    .qr-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .gift-bank { font-size: 1.1rem; }
+    .gift-purpose { font-size: 1rem; margin: 0.5rem 0 0.2rem; }
+    .gift-acct { font-size: 0.68rem; margin-bottom: 0.7rem; }
+  }
 
   /* ── VIDEO ── */
   .video-section { background: var(--charcoal); padding: 90px 2rem; }
@@ -707,7 +739,6 @@
     .ent-roles-2col { grid-template-columns: 1fr 1fr !important; gap: 0.8rem 0.6rem; }
     .ent-name { font-size: 0.78rem; }
 
-    .gift-cards { grid-template-columns: 1fr; }
     .rsvp-frame-wrap iframe { height: 900px; }
 
     .gallery-grid { columns: 2; column-gap: 6px; }
@@ -1308,32 +1339,34 @@
   <svg class="twig-deco tl" viewBox="0 0 280 380" style="opacity:0.06;"><use href="#twig"/></svg>
   <svg class="twig-deco br" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
 
-  <span class="section-label">With Love</span>
-  <h2 class="section-title">Gift Registry</h2>
-  <div class="section-rule"></div>
-  <p class="gift-intro">
-    We would be truly honored to celebrate this special day with you in person, though we completely understand if you are unable to join us. Your prayers and well wishes for our marriage are the greatest blessings we could receive.<br><br>
-    As some have thoughtfully asked, we have made options available should you wish to share your blessings — whichever you'd like to bless, your choice, with our gratitude.
-  </p>
-  <div class="gift-cards">
-    <div class="gift-card">
-      <span class="gift-bank bdo">BDO</span>
-      <div class="gift-purpose">FutureHome</div>
-      <div class="gift-acct">••••••••9632</div>
-      <div class="qr-img">
-        <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/BDO%20QR%20Placeholder.jpg" alt="BDO QR Code" loading="lazy">
+  <div class="gift-inner">
+    <span class="section-label">With Love</span>
+    <h2 class="section-title">Gift Registry</h2>
+    <div class="section-rule"></div>
+    <p class="gift-intro">
+      We would be truly honored to celebrate this special day with you in person, though we completely understand if you are unable to join us. Your prayers and well wishes for our marriage are the greatest blessings we could receive.<br><br>
+      As some have thoughtfully asked, we have made options available should you wish to share your blessings — whichever you'd like to bless, your choice, with our gratitude.
+    </p>
+    <div class="gift-cards">
+      <div class="gift-card">
+        <span class="gift-bank bdo">BDO</span>
+        <div class="gift-purpose">FutureHome</div>
+        <div class="gift-acct">••••••••9632</div>
+        <div class="qr-img">
+          <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/BDO%20QR%20Placeholder.jpg" alt="BDO QR Code" loading="lazy">
+        </div>
+      </div>
+      <div class="gift-card">
+        <span class="gift-bank bpi">BPI</span>
+        <div class="gift-purpose">FutureKids</div>
+        <div class="gift-acct">••••••••••594</div>
+        <div class="qr-img">
+          <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/BPI%20placeholder.jpg" alt="BPI QR Code" loading="lazy">
+        </div>
       </div>
     </div>
-    <div class="gift-card">
-      <span class="gift-bank bpi">BPI</span>
-      <div class="gift-purpose">FutureKids</div>
-      <div class="gift-acct">••••••••••594</div>
-      <div class="qr-img">
-        <img src="https://ik.imagekit.io/jcsquo5nq/cjandlj/BPI%20placeholder.jpg" alt="BPI QR Code" loading="lazy">
-      </div>
-    </div>
+    <p class="gift-closing">Thank you from the bottom of our hearts. With love, CJ & LJ</p>
   </div>
-  <p class="gift-closing">Thank you from the bottom of our hearts. With love, CJ & LJ</p>
 </section>
 
 <!-- ═══════════════════════ UPLOAD ═══════════════════════ -->
