@@ -27,15 +27,15 @@
     position: relative;
     overflow: hidden;
   }
-  /* Desktop: hidden — only shown on mobile */
+  /* Desktop: photo bg at low opacity, overlay hidden */
   .has-mobile-bg .mob-bg {
-    display: none;
+    display: block;
     position: absolute; inset: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
-    opacity: 1;
+    opacity: 0.2;
   }
   .has-mobile-bg .mob-bg-overlay {
     position: absolute; inset: 0;
