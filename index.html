@@ -27,7 +27,7 @@
     position: relative;
     overflow: hidden;
   }
-  /* Desktop: photo bg at low opacity, overlay hidden */
+  /* Photo bg (full opacity + dark overlay) applies on all breakpoints */
   .has-mobile-bg .mob-bg {
     display: block;
     position: absolute; inset: 0;
@@ -35,12 +35,13 @@
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
-    opacity: 0.2;
+    opacity: 1;
   }
   .has-mobile-bg .mob-bg-overlay {
     position: absolute; inset: 0;
     z-index: 1;
-    display: none;
+    display: block;
+    background: rgba(8,16,6,0.74);
   }
   /* All content above the bg layers */
   .has-mobile-bg .container { position: relative; z-index: 2; }
@@ -49,24 +50,18 @@
   .has-mobile-bg > div.section-rule,
   .has-mobile-bg > div.timeline-track,
   .has-mobile-bg > p.timeline-note { position: relative; z-index: 2; }
+  /* Text colors — apply on all breakpoints */
+  .has-mobile-bg .section-label { color: rgba(255,255,255,0.6) !important; }
+  .has-mobile-bg .section-title { color: #fff !important; }
+  .has-mobile-bg .section-rule { background: var(--gold-light) !important; opacity: 1 !important; }
+  .has-mobile-bg .note-item { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.88); border-left-color: var(--gold-light); }
+  .has-mobile-bg .note-item strong { color: #fff; }
   @media (max-width: 768px) {
-    /* Mobile: show bg image + dark overlay */
-    .has-mobile-bg .mob-bg { display: block; opacity: 1; }
-    .has-mobile-bg .mob-bg-overlay {
-      display: block;
-      background: rgba(8,16,6,0.74);
-    }
     /* Ensure all section content is above overlay */
     .has-mobile-bg .container,
     .has-mobile-bg > span,
     .has-mobile-bg > h2,
     .has-mobile-bg > p { position: relative; z-index: 3; }
-    /* Text colors */
-    .has-mobile-bg .section-label { color: rgba(255,255,255,0.6) !important; }
-    .has-mobile-bg .section-title { color: #fff !important; }
-    .has-mobile-bg .section-rule { background: var(--gold-light) !important; opacity: 1 !important; }
-    .has-mobile-bg .note-item { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.88); border-left-color: var(--gold-light); }
-    .has-mobile-bg .note-item strong { color: #fff; }
     /* Nav */
     nav { background: rgba(8,16,6,0.88) !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
     nav .nav-logo { color: var(--gold-light) !important; }
