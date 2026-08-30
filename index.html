@@ -662,22 +662,12 @@ nav > * {
 
   /* ── CLOSING ── */
   .closing-section {
-    background: var(--sage-light);
     padding: 80px 2rem;
     text-align: center;
     position: relative;
     overflow: hidden;
   }
-  .closing-section::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image: url('https://ik.imagekit.io/jcsquo5nq/cjandlj/10.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.22;
-    z-index: 0;
-  }
-  .closing-monogram { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(255,255,255,0.8); line-height: 1; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+  .closing-monogram { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(255,255,255,0.8); line-height: 1; margin-bottom: 1.5rem; position: relative; z-index: 2; }
   .closing-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: rgba(255,255,255,0.8); line-height: 1.9; max-width: 540px; margin: 0 auto 1.5rem; position: relative; z-index: 2; }
   .closing-names { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.35em; color: var(--gold-light); position: relative; z-index: 2; }
 
@@ -1499,7 +1489,9 @@ nav > * {
 </div>
 
 <!-- ═══════════════════════ CLOSING ═══════════════════════ -->
-<section class="closing-section">
+<section class="has-mobile-bg closing-section">
+  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/10.jpg');"></div>
+  <div class="mob-bg-overlay"></div>
   <svg class="twig-deco tl" viewBox="0 0 280 380" style="opacity:0.06;"><use href="#twig"/></svg>
   <svg class="twig-deco br" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
   <div class="closing-monogram" style="color:#ffffff;">CJ & LJ</div>
