@@ -161,6 +161,7 @@
   .hero-divider { width: 60px; height: 1px; background: var(--gold-light); margin: 1.8rem auto; opacity: 0.7; }
   .hero-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1rem, 3vw, 1.25rem); color: rgba(255,255,255,0.85); font-weight: 300; line-height: 1.8; }
   .hero-date { margin-top: 2rem; font-family: 'Cinzel', serif; font-size: clamp(0.75rem, 2vw, 0.9rem); letter-spacing: 0.3em; color: var(--gold-light); text-transform: uppercase; }
+  .hero-time { margin-top: 0.6rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.1rem, 3vw, 1.5rem); color: rgba(255,255,255,0.75); letter-spacing: 0.15em; }
   .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; color: rgba(255,255,255,0.45); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; animation: bounce 2.2s infinite; }
 
   /* ── COUNTDOWN ── */
@@ -640,9 +641,10 @@
     opacity: 0.22;
     z-index: 0;
   }
-  .closing-monogram { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(255,255,255,0.8); line-height: 1; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+  .closing-monogram { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(255,255,255,0.12); line-height: 1; margin-bottom: 1.5rem; position: relative; z-index: 1; }
   .closing-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: rgba(255,255,255,0.8); line-height: 1.9; max-width: 540px; margin: 0 auto 1.5rem; position: relative; z-index: 2; }
-  .closing-names { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.35em; color: var(--gold-light); position: relative; z-index: 2; }
+  .closing-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,0.65); margin-bottom: 0.3rem; position: relative; z-index: 2; }
+  .closing-names { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 400; letter-spacing: 0.05em; color: #ffffff; position: relative; z-index: 2; margin-top: 0.3rem; }
 
   /* ── FOOTER ── */
   footer {
@@ -760,13 +762,13 @@
   <div class="nav-logo">CJ & LJ</div>
   <ul class="nav-links">
     <li><a href="#location">Location</a></li>
-    <li><a href="#timeline">Timeline</a></li>
     <li><a href="#attire">Attire</a></li>
     <li><a href="#entourage">Entourage</a></li>
     <li><a href="#gifts">Gifts</a></li>
+    <li><a href="#video">Video</a></li>
     <li><a href="#photos">Gallery</a></li>
-    <li><a href="#upload">Upload</a></li>
     <li><a href="#rsvp">RSVP</a></li>
+    <li><a href="#upload">Upload</a></li>
   </ul>
   <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -774,13 +776,13 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#location" onclick="closeMenu()">Location</a>
-  <a href="#timeline" onclick="closeMenu()">Timeline</a>
   <a href="#attire" onclick="closeMenu()">Attire</a>
   <a href="#entourage" onclick="closeMenu()">Entourage</a>
   <a href="#gifts" onclick="closeMenu()">Gifts</a>
+  <a href="#video" onclick="closeMenu()">Video</a>
   <a href="#photos" onclick="closeMenu()">Gallery</a>
-  <a href="#upload" onclick="closeMenu()">Upload</a>
   <a href="#rsvp" onclick="closeMenu()">RSVP</a>
+  <a href="#upload" onclick="closeMenu()">Upload</a>
 </div>
 
 <!-- TWIG SVG DEFINITION (reusable) -->
@@ -829,13 +831,13 @@
 
   <div class="hero-inner">
     <div class="hero-monogram">CJ<span class="hero-amp">&</span>LJ</div>
-    <div class="hero-subtitle">The Wedding</div>
     <div class="hero-divider"></div>
     <p class="hero-tagline">
       By God's grace, together with our families,<br>
       we invite you to celebrate our wedding.
     </p>
     <div class="hero-date">Saturday · November 21, 2026</div>
+    <div class="hero-time">1:30 PM</div>
     <div class="countdown-wrap">
       <span class="countdown-label">Counting down to forever</span>
       <div class="countdown-grid">
@@ -905,10 +907,10 @@
 
     <span class="section-label reveal" style="margin-bottom:1rem;">Please Take Note</span>
     <div class="notes-grid reveal">
-      <div class="note-item">🕐 <span>We kindly ask that you <strong>arrive on time</strong> and <strong>stay with us until the end</strong> of the wedding reception program.</span></div>
+      <div class="note-item">🕐 <span>We kindly ask that you <strong>arrive on time</strong> at the church ceremony and <strong>stay with us until the end</strong> of the wedding reception program.</span></div>
       <div class="note-item">🚗 <span>Travel time from the church to reception is approximately <strong>30 minutes</strong>. Please plan accordingly.</span></div>
       <div class="note-item">🅿️ <span>Parking space is <strong>available</strong> at the venue. Please proceed to the designated parking area upon arrival.</span></div>
-      <div class="note-item">🪑 <span>Upon arrival, kindly proceed to the coordinator to <strong>check your seating assignment</strong> and receive your <strong>souvenir stub</strong>.</span></div>
+      <div class="note-item">🪑 <span>Upon arrival, kindly proceed to the coordinator to <strong>check your seating assignment</strong> and receive your <strong>bingo cards!</strong> Complete it and have a chance to win a <strong>raffle prize!</strong></span></div>
       <div class="note-item">📸 <span>We will be having our <strong>post-nuptial shoot</strong> during this time. We appreciate your patience — relax and enjoy the venue!</span></div>
       <div class="note-item">👶 <span>Your children are precious to us, but to keep the day solemn and enjoyable, we kindly request an <strong>adults-only</strong> celebration.</span></div>
     </div>
@@ -1365,28 +1367,7 @@
         </div>
       </div>
     </div>
-    <p class="gift-closing">Thank you from the bottom of our hearts.<br>With love,<br>CJ & LJ</p>
-  </div>
-</section>
-
-<!-- ═══════════════════════ UPLOAD ═══════════════════════ -->
-<section class="has-mobile-bg uploads-section" id="upload">
-  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/7.jpg');"></div>
-  <div class="mob-bg-overlay"></div>
-  <svg class="twig-deco tr" viewBox="0 0 280 380"><use href="#twig"/></svg>
-  <svg class="twig-deco bl" viewBox="0 0 280 380"><use href="#twig"/></svg>
-
-  <div class="container">
-    <span class="section-label reveal">Share Your Memories</span>
-    <h2 class="section-title reveal">Upload to Our Drive</h2>
-    <div class="section-rule reveal"></div>
-    <p class="upload-desc reveal">
-      Captured a wonderful moment from our special day? We'd love to see it through your eyes. Upload your photos and videos to our shared Google Drive folder.
-    </p>
-    <a class="upload-btn reveal" href="https://drive.google.com/drive/folders/1nZwh8iYLr-RXZ98rIKpDDOGik0cQYNHH" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-      Upload to Google Drive
-    </a>
+    <p class="gift-closing">Thank you from the bottom of our hearts. With love, CJ &amp; LJ</p>
   </div>
 </section>
 
@@ -1583,7 +1564,12 @@
     <span class="section-label" style="position:relative;z-index:2;">Kindly Reply</span>
     <h2 class="section-title" style="position:relative;z-index:2;">RSVP</h2>
     <div class="section-rule" style="position:relative;z-index:2;"></div>
-    <p>Let us know if you can make it to our celebration.</p>
+    <p style="max-width:680px;margin:0 auto 1.5rem;line-height:1.9;">
+      Please RSVP until <strong style="color:var(--gold-light);">October 16, 2026</strong>.<br><br>
+      If we do not receive your RSVP by then, we will assume that you are unable to attend, and your reserved seat will be given to someone else.<br><br>
+      We completely understand if you cannot make it. We would truly appreciate it if you could let us know ahead of time, so we can offer your seat to another person close to our hearts.<br><br>
+      Thank you so much for understanding and helping us finalize our guest list. We can't wait to celebrate this special day with you!
+    </p>
   </div>
   <div class="rsvp-frame-wrap">
     <iframe
@@ -1593,13 +1579,36 @@
   </div>
 </div>
 
+<!-- ═══════════════════════ UPLOAD ═══════════════════════ -->
+<section class="has-mobile-bg uploads-section" id="upload">
+  <div class="mob-bg" style="background-image:url('https://ik.imagekit.io/jcsquo5nq/cjandlj/7.jpg');"></div>
+  <div class="mob-bg-overlay"></div>
+  <svg class="twig-deco tr" viewBox="0 0 280 380"><use href="#twig"/></svg>
+  <svg class="twig-deco bl" viewBox="0 0 280 380"><use href="#twig"/></svg>
+
+  <div class="container">
+    <span class="section-label reveal">Share Your Memories</span>
+    <h2 class="section-title reveal">Upload to Our Drive</h2>
+    <div class="section-rule reveal"></div>
+    <p class="upload-desc reveal">
+      Captured a wonderful moment from our special day? We'd love to see it through your eyes. Upload your photos and videos to our shared Google Drive folder.
+    </p>
+    <a class="upload-btn reveal" href="https://drive.google.com/drive/folders/1nZwh8iYLr-RXZ98rIKpDDOGik0cQYNHH" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      Upload to Google Drive
+    </a>
+  </div>
+</section>
+
 <!-- ═══════════════════════ CLOSING ═══════════════════════ -->
 <section class="closing-section">
   <svg class="twig-deco tl" viewBox="0 0 280 380" style="opacity:0.06;"><use href="#twig"/></svg>
   <svg class="twig-deco br" viewBox="0 0 280 380" style="opacity:0.05;"><use href="#twig"/></svg>
   <div class="closing-monogram">CJ & LJ</div>
-  <p class="closing-text">We look forward to celebrating the beginning of our forever with each and every one of you. Thank you from the bottom of our hearts.</p>
-  <p class="closing-names">With Love · CJ & LJ</p>
+  <p class="closing-text">We look forward to celebrating the beginning of our forever with each and every one of you.</p>
+  <p class="closing-text" style="margin-top:0.5rem;">Thank you from the bottom of our hearts.</p>
+  <p class="closing-sub">With love,</p>
+  <p class="closing-names">CJ &amp; LJ</p>
 </section>
 
 <!-- FOOTER -->
@@ -1621,114 +1630,4 @@
       return;
     }
     const pad = n => String(Math.floor(n)).padStart(2, '0');
-    document.getElementById('cd-days').textContent  = pad(diff / 86400000);
-    document.getElementById('cd-hours').textContent = pad((diff % 86400000) / 3600000);
-    document.getElementById('cd-mins').textContent  = pad((diff % 3600000) / 60000);
-    document.getElementById('cd-secs').textContent  = pad((diff % 60000) / 1000);
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
-  // ── REVEAL OBSERVER ──
-  const allReveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
-  allReveals.forEach(el => revealObserver.observe(el));
-
-  // Shimmer section rules when they enter view
-  const rules = document.querySelectorAll('.section-rule');
-  const ruleObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('shimmer-ready'), 400); ruleObserver.unobserve(e.target); }
-    });
-  }, { threshold: 0.5 });
-  rules.forEach(r => ruleObserver.observe(r));
-
-  // Stagger entourage group reveals
-  document.querySelectorAll('.entourage-group').forEach((el, i) => {
-    el.style.transitionDelay = (i * 0.06) + 's';
-  });
-
-  // ── LIGHTBOX ──
-  const GALLERY_IMGS = [
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/1.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/2.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/3.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/4.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/5.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/6.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/7.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/8.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/9.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/10.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/11.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/12.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/13.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/14.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/15.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/16.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/17.jpg',
-  ];
-  let lbIdx = 0;
-
-  function openLightbox(idx) {
-    lbIdx = idx;
-    const lb = document.getElementById('lightbox');
-    const img = document.getElementById('lb-img');
-    const counter = document.getElementById('lb-counter');
-    img.src = GALLERY_IMGS[lbIdx];
-    counter.textContent = (lbIdx + 1) + ' / ' + GALLERY_IMGS.length;
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function closeLightboxOutside(e) {
-    if (e.target === document.getElementById('lightbox')) closeLightbox();
-  }
-  function lbNav(dir) {
-    lbIdx = (lbIdx + dir + GALLERY_IMGS.length) % GALLERY_IMGS.length;
-    const img = document.getElementById('lb-img');
-    img.style.opacity = '0';
-    img.style.transform = 'scale(0.96)';
-    img.style.transition = 'opacity 0.2s, transform 0.2s';
-    setTimeout(() => {
-      img.src = GALLERY_IMGS[lbIdx];
-      img.onload = () => {
-        img.style.opacity = '1';
-        img.style.transform = 'scale(1)';
-      };
-      document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + GALLERY_IMGS.length;
-    }, 180);
-  }
-  // Keyboard navigation
-  document.addEventListener('keydown', e => {
-    const lb = document.getElementById('lightbox');
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'ArrowRight') lbNav(1);
-    if (e.key === 'ArrowLeft') lbNav(-1);
-    if (e.key === 'Escape') closeLightbox();
-  });
-
-  // ── MOBILE NAV BACKGROUND ──
-  // Set a random bg image on nav for mobile
-  const bgImgs = [
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/2.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/5.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/9.jpg',
-    'https://ik.imagekit.io/jcsquo5nq/cjandlj/13.jpg',
-  ];
-  if (window.innerWidth <= 768) {
-    const pick = bgImgs[Math.floor(Math.random() * bgImgs.length)];
-    document.querySelector('nav').style.backgroundImage = 'linear-gradient(rgba(10,18,8,0.82),rgba(10,18,8,0.82)), url(' + pick + ')';
-    document.querySelector('nav').style.backgroundSize = 'cover';
-    document.querySelector('nav').style.backgroundPosition = 'center';
-  }
-</script>
-</body>
-</html>
+    document.getElementById('cd-days').textCo
